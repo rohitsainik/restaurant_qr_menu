@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "643238916979",
+    "firebase_url": "https://restroqr.firebaseio.com",
+    "project_id": "restroqr",
+    "storage_bucket": "restroqr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643238916979:android:19b82b0baecc2f26830b06",
+        "android_client_info": {
+          "package_name": "com.admin.restroqradmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643238916979-gbl0luf2qqtlqncnv2s0f8junfb3hdqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.admin.restroqradmin",
+            "certificate_hash": "87d980c8a5eed48905e2cd0c78fd4f76542aa85f"
+          }
+        },
+        {
+          "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC17VuHd3lMo9MA9VGpyFrCZ1LXPb44qFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643238916979:android:4a23dc16f8c3dc1f830b06",
+        "android_client_info": {
+          "package_name": "com.ec.restroqr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643238916979-rmor7cv22sb9s8jivco4eduj50d1mkb6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ec.restroqr",
+            "certificate_hash": "8cc387fb5a3853caefcb9ad474c1e340b3d0459f"
+          }
+        },
+        {
+          "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC17VuHd3lMo9MA9VGpyFrCZ1LXPb44qFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643238916979:android:a743b13b50104665830b06",
+        "android_client_info": {
+          "package_name": "com.ed.myrestroqr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643238916979-25t95bc399qbsqa4i89rlkeoq507jae6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ed.myrestroqr",
+            "certificate_hash": "8cc387fb5a3853caefcb9ad474c1e340b3d0459f"
+          }
+        },
+        {
+          "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC17VuHd3lMo9MA9VGpyFrCZ1LXPb44qFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643238916979:android:43e3999085ff9e91830b06",
+        "android_client_info": {
+          "package_name": "com.editorschamber.restroqr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643238916979-dqr6b96hum7cml753jp4r6qpio5fhklh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.editorschamber.restroqr",
+            "certificate_hash": "87d980c8a5eed48905e2cd0c78fd4f76542aa85f"
+          }
+        },
+        {
+          "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC17VuHd3lMo9MA9VGpyFrCZ1LXPb44qFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643238916979-h2qqqie6tu0ilp677eetv48khgu91ei5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
