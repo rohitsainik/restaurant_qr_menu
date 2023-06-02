@@ -12,10 +12,14 @@ class CategoryDropdownComponent extends StatefulWidget {
   final Function(CategoryModel value) onValueChanged;
   final bool isValidate;
 
-  CategoryDropdownComponent({this.defaultValue, required this.onValueChanged, required this.isValidate});
+  CategoryDropdownComponent(
+      {this.defaultValue,
+      required this.onValueChanged,
+      required this.isValidate});
 
   @override
-  _CategoryDropdownComponentState createState() => _CategoryDropdownComponentState();
+  _CategoryDropdownComponentState createState() =>
+      _CategoryDropdownComponentState();
 }
 
 class _CategoryDropdownComponentState extends State<CategoryDropdownComponent> {
@@ -41,11 +45,13 @@ class _CategoryDropdownComponentState extends State<CategoryDropdownComponent> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<CategoryModel>>(
-      future: _asyncMemoizer.runOnce(() => categoryService.getCategoryFutureData()),
+      future:
+          _asyncMemoizer.runOnce(() => categoryService.getCategoryFutureData()),
       builder: (context, snap) {
         if (snap.hasData) {
           if (widget.defaultValue != null) {
-            selectedData = snap.data!.firstWhere((element) => element.uid == widget.defaultValue);
+            selectedData = snap.data!
+                .firstWhere((element) => element.uid == widget.defaultValue);
             widget.onValueChanged.call(selectedData!);
           }
           return DropdownButtonFormField<CategoryModel>(
@@ -60,8 +66,11 @@ class _CategoryDropdownComponentState extends State<CategoryDropdownComponent> {
                     return null;
                   }
                 : null,
-            decoration: inputDecoration(context, label: '${language.lblChooseCategory}').copyWith(
-              prefixIcon: Icon(Icons.category_outlined, color: secondaryIconColor),
+            decoration:
+                inputDecoration(context, label: '${language.lblChooseCategory}')
+                    .copyWith(
+              prefixIcon:
+                  Icon(Icons.category_outlined, color: secondaryIconColor),
             ),
             dropdownColor: context.cardColor,
             alignment: Alignment.bottomCenter,
@@ -76,7 +85,8 @@ class _CategoryDropdownComponentState extends State<CategoryDropdownComponent> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${data.name.validate()}', style: primaryTextStyle()),
+                        Text('${data.name.validate()}',
+                            style: primaryTextStyle()),
                         cachedImage(
                           data.image.validate(),
                           height: 25,

@@ -30,7 +30,8 @@ abstract class BaseService<T> {
     });
   }
 
-  Future<void> updateDocument(Map<String, dynamic> data, String? id) => ref!.doc(id).update(data);
+  Future<void> updateDocument(Map<String, dynamic> data, String? id) =>
+      ref!.doc(id).update(data);
 
   Future<void> removeDocument(String id) => ref!.doc(id).delete();
 
@@ -55,11 +56,11 @@ abstract class BaseService<T> {
     String fileName = path;
     Reference storageRef = _storage.ref().child("$path/$fileName");
     UploadTask uploadTask;
-    if(isWeb){
+    if (isWeb) {
       Uint8List bytes = await image.readAsBytes();
-       uploadTask = storageRef.putData(bytes);
-    }else{
-       uploadTask = storageRef.putFile(File(image.path));
+      uploadTask = storageRef.putData(bytes);
+    } else {
+      uploadTask = storageRef.putFile(File(image.path));
     }
     return await uploadTask.then((e) async {
       return await e.ref.getDownloadURL().then((value) {
@@ -67,8 +68,4 @@ abstract class BaseService<T> {
       });
     });
   }
-
-
-
 }
-

@@ -8,13 +8,37 @@ import 'package:url_launcher/url_launcher.dart';
 
 List<LanguageDataModel> languageList() {
   return [
-    LanguageDataModel(id: 1, name: 'English', subTitle: 'English', languageCode: 'en', fullLanguageCode: 'en-US', flag: 'images/flag/ic_us.png'),
-    LanguageDataModel(id: 2, name: 'Hindi', subTitle: 'हिंदी', languageCode: 'hi', fullLanguageCode: 'hi-IN', flag: 'images/flag/ic_india.png'),
-    LanguageDataModel(id: 3, name: 'Arabic', subTitle: 'عربي', languageCode: 'ar', fullLanguageCode: 'ar-AR', flag: 'images/flag/ic_ar.png'),
+    LanguageDataModel(
+        id: 1,
+        name: 'English',
+        subTitle: 'English',
+        languageCode: 'en',
+        fullLanguageCode: 'en-US',
+        flag: 'images/flag/ic_us.png'),
+    LanguageDataModel(
+        id: 2,
+        name: 'Hindi',
+        subTitle: 'हिंदी',
+        languageCode: 'hi',
+        fullLanguageCode: 'hi-IN',
+        flag: 'images/flag/ic_india.png'),
+    LanguageDataModel(
+        id: 3,
+        name: 'Arabic',
+        subTitle: 'عربي',
+        languageCode: 'ar',
+        fullLanguageCode: 'ar-AR',
+        flag: 'images/flag/ic_ar.png'),
   ];
 }
 
-InputDecoration inputDecoration(BuildContext context, {String? hint, String? label, TextStyle? textStyle, Widget? prefix, EdgeInsetsGeometry? contentPadding, Widget? prefixIcon}) {
+InputDecoration inputDecoration(BuildContext context,
+    {String? hint,
+    String? label,
+    TextStyle? textStyle,
+    Widget? prefix,
+    EdgeInsetsGeometry? contentPadding,
+    Widget? prefixIcon}) {
   return InputDecoration(
     contentPadding: contentPadding,
     labelText: label,
@@ -25,18 +49,29 @@ InputDecoration inputDecoration(BuildContext context, {String? hint, String? lab
     prefixIcon: prefixIcon,
     errorMaxLines: 2,
     errorStyle: primaryTextStyle(color: Colors.red, size: 12),
-    focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(defaultRadius), borderSide: BorderSide(color: Colors.red, width: 1.0)),
-    errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(defaultRadius), borderSide: BorderSide(color: Colors.red, width: 1.0)),
-    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(defaultRadius), borderSide: BorderSide(width: 1.0, color: context.dividerColor)),
-    border: OutlineInputBorder(borderRadius: BorderRadius.circular(defaultRadius), borderSide: BorderSide(width: 1.0, color: context.dividerColor)),
-    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(defaultRadius), borderSide: BorderSide(color: primaryColor, width: 1.0)),
+    focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(defaultRadius),
+        borderSide: BorderSide(color: Colors.red, width: 1.0)),
+    errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(defaultRadius),
+        borderSide: BorderSide(color: Colors.red, width: 1.0)),
+    enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(defaultRadius),
+        borderSide: BorderSide(width: 1.0, color: context.dividerColor)),
+    border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(defaultRadius),
+        borderSide: BorderSide(width: 1.0, color: context.dividerColor)),
+    focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(defaultRadius),
+        borderSide: BorderSide(color: primaryColor, width: 1.0)),
     alignLabelWithHint: true,
   );
 }
 
 Future<XFile?> getImageSource({bool isCamera = true}) async {
   final picker = ImagePicker();
-  XFile? pickedImage = await picker.pickImage(source: isCamera ? ImageSource.camera : ImageSource.gallery);
+  XFile? pickedImage = await picker.pickImage(
+      source: isCamera ? ImageSource.camera : ImageSource.gallery);
   return pickedImage;
 }
 
@@ -56,26 +91,35 @@ BoxDecoration glassBoxDecoration({int? blurOpacity}) {
   return BoxDecoration(
     boxShadow: [
       BoxShadow(
-        color: appStore.isDarkMode ? Colors.black.withAlpha(100) : Colors.white.withAlpha(100),
+        color: appStore.isDarkMode
+            ? Colors.black.withAlpha(100)
+            : Colors.white.withAlpha(100),
         blurRadius: 10.0,
         spreadRadius: 0.0,
       ),
     ],
-    color: appStore.isDarkMode ? Colors.black.withAlpha(200) : Colors.white.withAlpha(200),
-    border: Border.all(color: appStore.isDarkMode ? Colors.black.withAlpha(80) : Colors.white10.withAlpha(80)),
+    color: appStore.isDarkMode
+        ? Colors.black.withAlpha(200)
+        : Colors.white.withAlpha(200),
+    border: Border.all(
+        color: appStore.isDarkMode
+            ? Colors.black.withAlpha(80)
+            : Colors.white10.withAlpha(80)),
   );
 }
 
 BoxDecoration blackBoxDecoration() {
   return BoxDecoration(
-    borderRadius: radiusOnly(bottomLeft: defaultRadius, bottomRight: defaultRadius),
+    borderRadius:
+        radiusOnly(bottomLeft: defaultRadius, bottomRight: defaultRadius),
     gradient: LinearGradient(
       begin: FractionalOffset.topCenter,
       end: FractionalOffset.bottomCenter,
       colors: [
         Colors.transparent,
         Colors.transparent,
-        ...List<Color>.generate(16, (index) => Colors.black.withAlpha(index * 10)),
+        ...List<Color>.generate(
+            16, (index) => Colors.black.withAlpha(index * 10)),
       ],
     ),
     // color: Colors.black.withAlpha(100),

@@ -9,7 +9,8 @@ class MenuCategoryLisComponentStyleThree extends StatelessWidget {
   final CategoryModel categoryData;
   final bool isAdmin;
 
-  MenuCategoryLisComponentStyleThree({required this.categoryData, required this.isAdmin});
+  MenuCategoryLisComponentStyleThree(
+      {required this.categoryData, required this.isAdmin});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +18,16 @@ class MenuCategoryLisComponentStyleThree extends StatelessWidget {
       children: [
         Text(
           categoryData.name.validate(),
-          style: boldTextStyle(size: 20, fontFamily: GoogleFonts.gloriaHallelujah().fontFamily),
+          style: boldTextStyle(
+              size: 20, fontFamily: GoogleFonts.gloriaHallelujah().fontFamily),
         ).onTap(() {
           if (isAdmin) {
             AddCategoryScreen(categoryData: categoryData).launch(context);
           }
         }),
-        Image.asset('images/ic_line.png', width: 100, color: appStore.isDarkMode ? Colors.white : Colors.black),
+        Image.asset('images/ic_line.png',
+            width: 100,
+            color: appStore.isDarkMode ? Colors.white : Colors.black),
         16.height,
       ],
     ).center();

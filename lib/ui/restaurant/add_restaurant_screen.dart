@@ -81,7 +81,9 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
       addressCont.text = widget.data!.address.validate();
       descCont.text = widget.data!.description.validate();
       dateCont.text = widget.data!.newItemForDays.validate().toString();
-      sel = CurrencyModel.getCurrencyList().where((element) => element.symbol == widget.data!.currency).first;
+      sel = CurrencyModel.getCurrencyList()
+          .where((element) => element.symbol == widget.data!.currency)
+          .first;
       currencyCont.text = "${sel!.symbol.validate()} ${sel!.name.validate()}";
 
       _image = widget.data!.image.validate();
@@ -119,7 +121,12 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
   Future<void> saveData() async {
     appStore.setLoading(true);
     if (isUpdate) {
-      await restaurantOwnerService.updateResturantInfo(getResturantData.toJson(), widget.data!.uid.validate(), profileImage: image != null ? image : null, logoImage: logoImage != null ? logoImage : null).then((value) {
+      await restaurantOwnerService
+          .updateResturantInfo(
+              getResturantData.toJson(), widget.data!.uid.validate(),
+              profileImage: image != null ? image : null,
+              logoImage: logoImage != null ? logoImage : null)
+          .then((value) {
         finish(context);
         finish(context, true);
       }).whenComplete(() => appStore.setLoading(false));
@@ -150,7 +157,9 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
         showConfirmDialogCustom(
           context,
           dialogType: isUpdate ? DialogType.UPDATE : DialogType.ADD,
-          title: isUpdate ? '${language.lblDoYouWantToUpdateRestaurant}?' : '${language.lblDoYouWantToAddRestaurant}?',
+          title: isUpdate
+              ? '${language.lblDoYouWantToUpdateRestaurant}?'
+              : '${language.lblDoYouWantToAddRestaurant}?',
           onAccept: (context) {
             hideKeyboard(context);
             saveData();
@@ -180,13 +189,16 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: appBarWidget(
-          isUpdate ? '${language.lblUpdateRestaurant}' : '${language.lblAddRestaurant}',
+          isUpdate
+              ? '${language.lblUpdateRestaurant}'
+              : '${language.lblAddRestaurant}',
           color: context.scaffoldBackgroundColor,
         ),
         floatingActionButton: FloatingActionButton.extended(
           label: Text(
             isUpdate ? "${language.lblUpdate}" : "${language.lblAdd}",
-            style: boldTextStyle(color: appStore.isDarkMode ? primaryColor : Colors.white),
+            style: boldTextStyle(
+                color: appStore.isDarkMode ? primaryColor : Colors.white),
           ),
           icon: Icon(
             isUpdate ? Icons.update : Icons.add,
@@ -220,13 +232,17 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                               _logoImage = "";
                               setState(() {});
                             },
-                          ).withSize(height: 170, width: context.width() / 2 - 32),
+                          ).withSize(
+                              height: 170, width: context.width() / 2 - 32),
                           isUpdate
                               ? Text(
-                                  _image!.isEmpty ? language.lblAddLogoImage : language.lblChangeLogoImage,
+                                  _image!.isEmpty
+                                      ? language.lblAddLogoImage
+                                      : language.lblChangeLogoImage,
                                   style: primaryTextStyle(size: 12),
                                 )
-                              : Text(language.lblAddLogoImage, style: primaryTextStyle(size: 12))
+                              : Text(language.lblAddLogoImage,
+                                  style: primaryTextStyle(size: 12))
                         ],
                       ),
                       16.width,
@@ -241,20 +257,30 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                               _image = "";
                               setState(() {});
                             },
-                          ).withSize(height: 170, width: context.width() / 2 - 32),
+                          ).withSize(
+                              height: 170, width: context.width() / 2 - 32),
                           isUpdate
                               ? Text(
-                                  _image!.isEmpty ? language.lblAddRestaurantImage : language.lblChangeRestaurantImage,
+                                  _image!.isEmpty
+                                      ? language.lblAddRestaurantImage
+                                      : language.lblChangeRestaurantImage,
                                   style: primaryTextStyle(size: 12),
                                 )
-                              : Text(language.lblAddRestaurantImage, style: primaryTextStyle(size: 12))
+                              : Text(language.lblAddRestaurantImage,
+                                  style: primaryTextStyle(size: 12))
                         ],
                       ),
                     ],
                   ),
                   30.height,
                   AppTextField(
-                    decoration: inputDecoration(context, label: "${language.lblName}").copyWith(prefixIcon: IconButton(onPressed: null, icon: Icon(Icons.drive_file_rename_outline, color: secondaryIconColor))),
+                    decoration:
+                        inputDecoration(context, label: "${language.lblName}")
+                            .copyWith(
+                                prefixIcon: IconButton(
+                                    onPressed: null,
+                                    icon: Icon(Icons.drive_file_rename_outline,
+                                        color: secondaryIconColor))),
                     controller: nameCont,
                     textFieldType: TextFieldType.NAME,
                     focus: nameNode,
@@ -262,7 +288,13 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                   ),
                   16.height,
                   AppTextField(
-                    decoration: inputDecoration(context, label: "${language.lblEmail}").copyWith(prefixIcon: IconButton(onPressed: null, icon: Icon(Icons.email_outlined, color: secondaryIconColor))),
+                    decoration:
+                        inputDecoration(context, label: "${language.lblEmail}")
+                            .copyWith(
+                                prefixIcon: IconButton(
+                                    onPressed: null,
+                                    icon: Icon(Icons.email_outlined,
+                                        color: secondaryIconColor))),
                     controller: mailCont,
                     textFieldType: TextFieldType.EMAIL,
                     focus: mailNode,
@@ -271,7 +303,8 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                   16.height,
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: isCheck ? Colors.red : context.dividerColor),
+                      border: Border.all(
+                          color: isCheck ? Colors.red : context.dividerColor),
                       borderRadius: radius(defaultRadius),
                     ),
                     padding: EdgeInsets.all(4),
@@ -284,7 +317,8 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                           child: Container(
                             color: context.scaffoldBackgroundColor,
                             padding: EdgeInsets.symmetric(horizontal: 4),
-                            child: Text(language.lblType, style: secondaryTextStyle(size: 12)),
+                            child: Text(language.lblType,
+                                style: secondaryTextStyle(size: 12)),
                           ),
                         ),
                         Row(
@@ -299,7 +333,8 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                                   isVeg = value!;
                                 });
                               },
-                              title: Text(language.lblVeg, style: secondaryTextStyle()),
+                              title: Text(language.lblVeg,
+                                  style: secondaryTextStyle()),
                             ).expand(),
                             CheckboxListTile(
                               value: isNonVeg,
@@ -311,7 +346,8 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                                   isNonVeg = value!;
                                 });
                               },
-                              title: Text(language.lblNonVeg, style: secondaryTextStyle()),
+                              title: Text(language.lblNonVeg,
+                                  style: secondaryTextStyle()),
                             ).expand(),
                           ],
                         ),
@@ -321,8 +357,13 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                   16.height,
                   AppTextField(
                     textInputAction: TextInputAction.next,
-                    decoration: inputDecoration(context, label: "${language.lblContact}").copyWith(
-                      prefixIcon: IconButton(onPressed: null, icon: Icon(LineIcons.phone, color: secondaryIconColor)),
+                    decoration: inputDecoration(context,
+                            label: "${language.lblContact}")
+                        .copyWith(
+                      prefixIcon: IconButton(
+                          onPressed: null,
+                          icon:
+                              Icon(LineIcons.phone, color: secondaryIconColor)),
                     ),
                     controller: contactCont,
                     focus: contactNode,
@@ -334,17 +375,21 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                   ),
                   16.height,
                   AppTextField(
-                    decoration: inputDecoration(context, label: "${language.lblCurrency}").copyWith(
+                    decoration: inputDecoration(context,
+                            label: "${language.lblCurrency}")
+                        .copyWith(
                       prefixIcon: IconButton(
                         onPressed: null,
-                        icon: Icon(LineIcons.money_bill, color: secondaryIconColor),
+                        icon: Icon(LineIcons.money_bill,
+                            color: secondaryIconColor),
                       ),
                     ),
                     controller: currencyCont,
                     onTap: () async {
                       sel = await push(CurrencyScreen(selectedCurrency: sel));
                       if (sel != null) {
-                        currencyCont.text = "${sel!.symbol.validate()} ${sel!.name.validate()}";
+                        currencyCont.text =
+                            "${sel!.symbol.validate()} ${sel!.name.validate()}";
                         setState(() {});
                       }
                     },
@@ -360,8 +405,13 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                   AppTextField(
                     controller: dateCont,
                     isValidationRequired: true,
-                    decoration: inputDecoration(context, label: "${language.lblNewItemValidity}").copyWith(
-                      prefixIcon: IconButton(onPressed: null, icon: Icon(LineIcons.calendar, color: secondaryIconColor)),
+                    decoration: inputDecoration(context,
+                            label: "${language.lblNewItemValidity}")
+                        .copyWith(
+                      prefixIcon: IconButton(
+                          onPressed: null,
+                          icon: Icon(LineIcons.calendar,
+                              color: secondaryIconColor)),
                     ),
                     textFieldType: TextFieldType.PHONE,
                     focus: dateNode,
@@ -370,8 +420,11 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                   ),
                   16.height,
                   AppTextField(
-                    decoration: inputDecoration(context, label: "${language.lblAddress}").copyWith(
-                      prefixIcon: Icon(LineIcons.building, color: secondaryIconColor),
+                    decoration: inputDecoration(context,
+                            label: "${language.lblAddress}")
+                        .copyWith(
+                      prefixIcon:
+                          Icon(LineIcons.building, color: secondaryIconColor),
                     ),
                     controller: addressCont,
                     textInputAction: TextInputAction.next,
@@ -392,7 +445,8 @@ class _AddRestaurantScreenState extends State<AddRestaurantScreen> {
                     ).copyWith(
                       prefixIcon: IconButton(
                         onPressed: null,
-                        icon: Icon(Icons.description_outlined, color: secondaryIconColor),
+                        icon: Icon(Icons.description_outlined,
+                            color: secondaryIconColor),
                       ),
                     ),
                     textInputAction: TextInputAction.done,

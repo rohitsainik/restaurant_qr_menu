@@ -51,7 +51,9 @@ class SignUpScreenState extends State<SignUpScreen> {
     if (widget.isFromLogin!) {
       appStore.setLoading(true);
 
-      userService.userByEmail(getStringAsync(SharePreferencesKey.USER_EMAIL)).then((UserModel value) {
+      userService
+          .userByEmail(getStringAsync(SharePreferencesKey.USER_EMAIL))
+          .then((UserModel value) {
         //
         nameCont.text = value.name.validate();
         emailCont.text = value.email.validate();
@@ -80,7 +82,9 @@ class SignUpScreenState extends State<SignUpScreen> {
       data.createdAt = socialLoginData.createdAt;
       data.updatedAt = Timestamp.now();
 
-      userService.updateDocument(data.toJson(), socialLoginData.uid.validate()).then((value) {
+      userService
+          .updateDocument(data.toJson(), socialLoginData.uid.validate())
+          .then((value) {
         setValue(SharePreferencesKey.USER_NUMBER, numCont.text);
         push(DashBoardScreen(), isNewTask: true);
       }).catchError((e) {
@@ -148,10 +152,13 @@ class SignUpScreenState extends State<SignUpScreen> {
                                 textStyle: primaryTextStyle(),
                                 controller: nameCont,
                                 textFieldType: TextFieldType.NAME,
-                                decoration: inputDecoration(context, label: language.lblName).copyWith(
+                                decoration: inputDecoration(context,
+                                        label: language.lblName)
+                                    .copyWith(
                                   prefixIcon: IconButton(
                                     onPressed: null,
-                                    icon: Icon(Icons.person_outline, color: secondaryIconColor),
+                                    icon: Icon(Icons.person_outline,
+                                        color: secondaryIconColor),
                                   ),
                                 ),
                               ),
@@ -162,10 +169,13 @@ class SignUpScreenState extends State<SignUpScreen> {
                                 controller: emailCont,
                                 enabled: !widget.isFromLogin!,
                                 textFieldType: TextFieldType.EMAIL,
-                                decoration: inputDecoration(context, label: language.lblEmail).copyWith(
+                                decoration: inputDecoration(context,
+                                        label: language.lblEmail)
+                                    .copyWith(
                                   prefixIcon: IconButton(
                                     onPressed: null,
-                                    icon: Icon(Icons.email_outlined, color: secondaryIconColor),
+                                    icon: Icon(Icons.email_outlined,
+                                        color: secondaryIconColor),
                                   ),
                                 ),
                               ),
@@ -178,10 +188,13 @@ class SignUpScreenState extends State<SignUpScreen> {
                                       controller: passCont,
                                       textFieldType: TextFieldType.PASSWORD,
                                       nextFocus: contactFocus,
-                                      decoration: inputDecoration(context, label: language.lblPassword).copyWith(
+                                      decoration: inputDecoration(context,
+                                              label: language.lblPassword)
+                                          .copyWith(
                                         prefixIcon: IconButton(
                                           onPressed: null,
-                                          icon: Icon(Icons.password, color: secondaryIconColor),
+                                          icon: Icon(Icons.password,
+                                              color: secondaryIconColor),
                                         ),
                                       ),
                                     ),
@@ -193,12 +206,18 @@ class SignUpScreenState extends State<SignUpScreen> {
                                 isValidationRequired: false,
                                 controller: numCont,
                                 maxLength: 12,
-                                buildCounter: (context, {required currentLength, required isFocused, maxLength}) {},
+                                buildCounter: (context,
+                                    {required currentLength,
+                                    required isFocused,
+                                    maxLength}) {},
                                 textFieldType: TextFieldType.PHONE,
-                                decoration: inputDecoration(context, label: language.lblPhoneNumber).copyWith(
+                                decoration: inputDecoration(context,
+                                        label: language.lblPhoneNumber)
+                                    .copyWith(
                                   prefixIcon: IconButton(
                                     onPressed: null,
-                                    icon: Icon(LineIcons.phone, color: secondaryIconColor),
+                                    icon: Icon(LineIcons.phone,
+                                        color: secondaryIconColor),
                                   ),
                                 ),
                               ),
@@ -208,7 +227,10 @@ class SignUpScreenState extends State<SignUpScreen> {
                       16.height,
                       AppButton(
                           text: language.lblSignUp,
-                          textStyle: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+                          textStyle: boldTextStyle(
+                              color: appStore.isDarkMode
+                                  ? Colors.black
+                                  : Colors.white),
                           width: context.width(),
                           onTap: () {
                             if (_formKey.currentState!.validate()) {
@@ -222,9 +244,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("${language.lblAlreadyHaveAccount}?", style: secondaryTextStyle(size: 14)).flexible(),
+                    Text("${language.lblAlreadyHaveAccount}?",
+                            style: secondaryTextStyle(size: 14))
+                        .flexible(),
                     TextButton(
-                      child: Text(language.lblSignInHere, style: boldTextStyle(size: 14)),
+                      child: Text(language.lblSignInHere,
+                          style: boldTextStyle(size: 14)),
                       onPressed: () {
                         finish(context);
                       },

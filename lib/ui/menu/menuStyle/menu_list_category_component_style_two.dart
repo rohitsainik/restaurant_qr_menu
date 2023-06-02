@@ -8,7 +8,8 @@ class MenuCategoryLisComponentStyleTwo extends StatelessWidget {
   final CategoryModel categoryData;
   final bool isAdmin;
 
-  MenuCategoryLisComponentStyleTwo({required this.categoryData, this.isAdmin = false});
+  MenuCategoryLisComponentStyleTwo(
+      {required this.categoryData, this.isAdmin = false});
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +26,21 @@ class MenuCategoryLisComponentStyleTwo extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                decoration: BoxDecoration(border: Border.all(color: context.dividerColor, width: 3)),
+                decoration: BoxDecoration(
+                    border: Border.all(color: context.dividerColor, width: 3)),
                 child: Text(
                   categoryData.name.validate(),
-                  style: boldTextStyle(size: 20, fontFamily: GoogleFonts.aclonica().fontFamily),
+                  style: boldTextStyle(
+                      size: 20, fontFamily: GoogleFonts.aclonica().fontFamily),
                 ),
               ),
               Container(
                 transform: new Matrix4.identity()..rotateZ(8 * 3.14 / 180),
                 padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(border: Border.all(color: context.dividerColor, width: 3)),
-                child: Text(categoryData.name.validate(), style: boldTextStyle(size: 21, color: Colors.transparent)),
+                decoration: BoxDecoration(
+                    border: Border.all(color: context.dividerColor, width: 3)),
+                child: Text(categoryData.name.validate(),
+                    style: boldTextStyle(size: 21, color: Colors.transparent)),
               )
             ],
           ).center(),

@@ -16,7 +16,8 @@ class ImageOptionComponent extends StatefulWidget {
   String? name;
   final Function(XFile? image) onImageSelected;
 
-  ImageOptionComponent({this.defaultImage, required this.onImageSelected, this.name});
+  ImageOptionComponent(
+      {this.defaultImage, required this.onImageSelected, this.name});
 
   @override
   _ImageOptionComponentState createState() => _ImageOptionComponentState();
@@ -121,9 +122,11 @@ class _ImageOptionComponentState extends State<ImageOptionComponent> {
                   FileType file = await showInDialog(
                     context,
                     contentPadding: EdgeInsets.symmetric(vertical: 16),
-                    title: Text(language.lblChooseAnAction, style: boldTextStyle()),
+                    title: Text(language.lblChooseAnAction,
+                        style: boldTextStyle()),
                     builder: (p0) {
-                      return FilePickerDialog(isSelected: (isUpdate || image != null));
+                      return FilePickerDialog(
+                          isSelected: (isUpdate || image != null));
                     },
                   );
                   if (file == FileType.CANCEL) {
@@ -133,7 +136,8 @@ class _ImageOptionComponentState extends State<ImageOptionComponent> {
                     widget.onImageSelected.call(null);
                     return;
                   }
-                  image = await getImageSource(isCamera: file == FileType.CAMERA ? true : false);
+                  image = await getImageSource(
+                      isCamera: file == FileType.CAMERA ? true : false);
                   widget.onImageSelected.call(image!);
                   setState(() {});
                 },

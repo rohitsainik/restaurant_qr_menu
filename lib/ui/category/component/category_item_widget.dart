@@ -86,7 +86,9 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                             color: context.cardColor,
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          child: Text("${language.lblA}", style: boldTextStyle(size: 24)).center(),
+                          child: Text("${language.lblA}",
+                                  style: boldTextStyle(size: 24))
+                              .center(),
                         ),
                         Text(
                           language.lblAll,

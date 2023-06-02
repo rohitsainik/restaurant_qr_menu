@@ -11,7 +11,11 @@ class CategoryListView extends StatefulWidget {
   final Function(int) onCategoryChanged;
   final int selectedIndex;
 
-  CategoryListView({required this.categories, required this.onCategoryChanged, required this.isAdmin, required this.selectedIndex});
+  CategoryListView(
+      {required this.categories,
+      required this.onCategoryChanged,
+      required this.isAdmin,
+      required this.selectedIndex});
 
   @override
   _CategoryListViewState createState() => _CategoryListViewState();
@@ -55,7 +59,8 @@ class _CategoryListViewState extends State<CategoryListView> {
               AddCategoryScreen(categoryData: categoryData).launch(context);
             }
           },
-          child: CategoryWidget(categoryData: categoryData, isSelected: isSelected),
+          child: CategoryWidget(
+              categoryData: categoryData, isSelected: isSelected),
         );
       },
     );

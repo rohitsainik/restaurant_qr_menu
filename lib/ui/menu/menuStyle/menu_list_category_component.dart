@@ -20,7 +20,8 @@ class MenuListCategoryComponent extends StatelessWidget {
           Container(
             height: 40,
             width: 40,
-            decoration: BoxDecoration(borderRadius: radius(50), color: context.cardColor),
+            decoration: BoxDecoration(
+                borderRadius: radius(50), color: context.cardColor),
             child: categoryData.image.isEmptyOrNull
                 ? Text(
                     categoryData.name![0],
@@ -37,7 +38,9 @@ class MenuListCategoryComponent extends StatelessWidget {
               categoryData.description.isEmptyOrNull
                   ? Offstage()
                   : Text(
-                      categoryData.description.validate().capitalizeFirstLetter(),
+                      categoryData.description
+                          .validate()
+                          .capitalizeFirstLetter(),
                       style: secondaryTextStyle(),
                     ),
             ],
@@ -50,8 +53,13 @@ class MenuListCategoryComponent extends StatelessWidget {
                 if (v == 1) {
                   AddCategoryScreen(categoryData: categoryData).launch(context);
                 } else if (v == 2) {
-                  if (await menuService.checkChildItemExist(categoryData.uid!, selectedRestaurant.uid!) < 0) {
-                    categoryService.removeCustomDocument(categoryData.uid!, selectedRestaurant.uid!).then(
+                  if (await menuService.checkChildItemExist(
+                          categoryData.uid!, selectedRestaurant.uid!) <
+                      0) {
+                    categoryService
+                        .removeCustomDocument(
+                            categoryData.uid!, selectedRestaurant.uid!)
+                        .then(
                       (value) {
                         appStore.setLoading(false);
                         finish(context);
@@ -64,8 +72,14 @@ class MenuListCategoryComponent extends StatelessWidget {
                       title: '${language.lblTextForDeletingCategory}?',
                       onAccept: (c) async {
                         appStore.setLoading(true);
-                        await menuService.checkToDelete(categoryData.uid!, selectedRestaurant.uid!).then((value) async {
-                          await categoryService.removeCustomDocument(categoryData.uid!, selectedRestaurant.uid!).then(
+                        await menuService
+                            .checkToDelete(
+                                categoryData.uid!, selectedRestaurant.uid!)
+                            .then((value) async {
+                          await categoryService
+                              .removeCustomDocument(
+                                  categoryData.uid!, selectedRestaurant.uid!)
+                              .then(
                             (value) {
                               appStore.setLoading(false);
                               finish(context);
@@ -82,14 +96,16 @@ class MenuListCategoryComponent extends StatelessWidget {
                   toast('${language.lblWrongSelection}');
                 }
               },
-              shape: RoundedRectangleBorder(borderRadius: radius(defaultRadius)),
+              shape:
+                  RoundedRectangleBorder(borderRadius: radius(defaultRadius)),
               itemBuilder: (BuildContext context) => [
                 PopupMenuItem(
                   value: 1,
                   child: SettingItemWidget(
                     padding: EdgeInsets.all(0),
                     onTap: null,
-                    leading: Icon(Icons.edit, color: context.iconColor, size: 20),
+                    leading:
+                        Icon(Icons.edit, color: context.iconColor, size: 20),
                     title: '${language.lblEdit}',
                     titleTextStyle: primaryTextStyle(),
                   ),
@@ -98,7 +114,8 @@ class MenuListCategoryComponent extends StatelessWidget {
                   value: 2,
                   child: SettingItemWidget(
                     onTap: null,
-                    leading: Icon(Icons.delete, color: context.iconColor, size: 20),
+                    leading:
+                        Icon(Icons.delete, color: context.iconColor, size: 20),
                     padding: EdgeInsets.all(0),
                     title: '${language.lblDelete}',
                     titleTextStyle: primaryTextStyle(),

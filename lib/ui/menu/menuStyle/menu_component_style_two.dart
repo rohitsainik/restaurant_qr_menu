@@ -20,14 +20,22 @@ class MenuComponentStyleTwo extends StatelessWidget {
           children: [
             Row(
               children: [
-                menuModel!.isVeg.validate() ? VegComponent(size: 16, isAvailableToday: menuModel!.isAvailableToday) : NonVegComponent(size: 16, isAvailableToday: menuModel!.isAvailableToday),
+                menuModel!.isVeg.validate()
+                    ? VegComponent(
+                        size: 16, isAvailableToday: menuModel!.isAvailableToday)
+                    : NonVegComponent(
+                        size: 16,
+                        isAvailableToday: menuModel!.isAvailableToday),
                 8.width,
                 Stack(
                   children: [
                     Container(
                       height: 24,
                       width: 24,
-                      decoration: BoxDecoration(color: context.scaffoldBackgroundColor, borderRadius: BorderRadius.circular(50), border: Border.all(color: context.dividerColor)),
+                      decoration: BoxDecoration(
+                          color: context.scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(color: context.dividerColor)),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(50),
                         child: menuModel!.image.isEmptyOrNull
@@ -55,7 +63,9 @@ class MenuComponentStyleTwo extends StatelessWidget {
                   '${menuModel!.name!.trim()}',
                   style: boldTextStyle(
                     size: 18,
-                    color: menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                    color: menuModel!.isAvailableToday == false
+                        ? Colors.grey
+                        : context.iconColor,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -64,18 +74,29 @@ class MenuComponentStyleTwo extends StatelessWidget {
                 if (menuModel!.status == false)
                   Icon(
                     Icons.circle,
-                    color: menuModel!.isAvailableToday == false ? Colors.grey : Colors.red,
+                    color: menuModel!.isAvailableToday == false
+                        ? Colors.grey
+                        : Colors.red,
                     size: 10,
                   ),
                 6.width,
-                menuModel!.isJain.validate() && menuModel!.isAvailableToday != false ? Text('J', style: boldTextStyle(size: 16, color: Colors.red)) : Offstage(),
-                menuModel!.isSpicy.validate() && menuModel!.isAvailableToday != false ? Image.asset('images/chili.png', height: 16, width: 16) : Offstage(),
+                menuModel!.isJain.validate() &&
+                        menuModel!.isAvailableToday != false
+                    ? Text('J',
+                        style: boldTextStyle(size: 16, color: Colors.red))
+                    : Offstage(),
+                menuModel!.isSpicy.validate() &&
+                        menuModel!.isAvailableToday != false
+                    ? Image.asset('images/chili.png', height: 16, width: 16)
+                    : Offstage(),
               ],
             ).expand(),
             Text('${selectedRestaurant.currency}${menuModel!.price}',
                 style: boldTextStyle(
                   size: 18,
-                  color: menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                  color: menuModel!.isAvailableToday == false
+                      ? Colors.grey
+                      : context.iconColor,
                 )),
           ],
         ),

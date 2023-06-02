@@ -45,7 +45,9 @@ class ResDetailScreenState extends State<ResDetailScreen> {
 
   Future<void> deleteData() async {
     appStore.setLoading(true);
-    restaurantOwnerService.removeCustomDocument(widget.data.uid!).then((value) async {
+    restaurantOwnerService
+        .removeCustomDocument(widget.data.uid!)
+        .then((value) async {
       finish(context);
     }).catchError((e) {
       toast(e.toString());
@@ -80,7 +82,9 @@ class ResDetailScreenState extends State<ResDetailScreen> {
                 ifNotTester(context, () {
                   showConfirmDialogCustom(context, onAccept: (c) {
                     deleteData();
-                  }, dialogType: DialogType.DELETE, title: '${language.lblDoYouWantToDeleteRestaurant}?');
+                  },
+                      dialogType: DialogType.DELETE,
+                      title: '${language.lblDoYouWantToDeleteRestaurant}?');
                 });
               } else {
                 toast(language.lblWrongSelection);
@@ -103,7 +107,8 @@ class ResDetailScreenState extends State<ResDetailScreen> {
                 value: 2,
                 child: SettingItemWidget(
                   onTap: null,
-                  leading: Icon(Icons.delete, color: context.iconColor, size: 20),
+                  leading:
+                      Icon(Icons.delete, color: context.iconColor, size: 20),
                   padding: EdgeInsets.all(0),
                   title: '${language.lblDelete}',
                   titleTextStyle: primaryTextStyle(),

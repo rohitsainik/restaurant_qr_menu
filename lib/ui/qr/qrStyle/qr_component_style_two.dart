@@ -8,7 +8,8 @@ class QrComponentStyleTwo extends StatelessWidget {
   final String saveUrl;
   final bool isTesting;
 
-  QrComponentStyleTwo({required this.isTesting, required this.qrKey, required this.saveUrl});
+  QrComponentStyleTwo(
+      {required this.isTesting, required this.qrKey, required this.saveUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,8 @@ class QrComponentStyleTwo extends StatelessWidget {
             child: QrImageView(
               version: 4,
               eyeStyle: QrEyeStyle(eyeShape: QrEyeShape.circle),
-              dataModuleStyle: QrDataModuleStyle(dataModuleShape: QrDataModuleShape.circle),
+              dataModuleStyle:
+                  QrDataModuleStyle(dataModuleShape: QrDataModuleShape.circle),
               data: isTesting ? selectedRestaurant.uid.validate() : saveUrl,
               size: 250,
               backgroundColor: Colors.white,
@@ -37,16 +39,19 @@ class QrComponentStyleTwo extends StatelessWidget {
               errorStateBuilder: (cxt, err) {
                 return Container(
                   child: Center(
-                    child: Text("${language.lblUhOhSomethingWentWrong}", textAlign: TextAlign.center),
+                    child: Text("${language.lblUhOhSomethingWentWrong}",
+                        textAlign: TextAlign.center),
                   ),
                 );
               },
             ),
           ),
           16.height,
-          Text(language.lblScanForOurOnlineMenu, textAlign: TextAlign.center, style: primaryTextStyle(size: 20)),
+          Text(language.lblScanForOurOnlineMenu,
+              textAlign: TextAlign.center, style: primaryTextStyle(size: 20)),
           16.height,
-          Text("${selectedRestaurant.name.validate()}", textAlign: TextAlign.center, style: boldTextStyle(size: 36)),
+          Text("${selectedRestaurant.name.validate()}",
+              textAlign: TextAlign.center, style: boldTextStyle(size: 36)),
         ],
       ),
     ).center();

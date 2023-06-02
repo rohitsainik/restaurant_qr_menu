@@ -45,7 +45,6 @@ class Menus {
   static String status = "status";
   static String ingredient = "ingredient";
   static String categoryReference = "categoryReference";
-
 }
 
 class Restaurants {
@@ -64,5 +63,4 @@ class Restaurants {
   static String isNonVeg = 'isNonVeg';
   static String newItemForDays = 'newItemForDays';
   static String menuStyle = 'menuStyle';
-
 }

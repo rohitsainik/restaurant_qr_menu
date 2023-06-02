@@ -12,7 +12,16 @@ class UserModel {
   Timestamp? createdAt;
   Timestamp? updatedAt;
 
-  UserModel({this.email, this.uid, this.name, this.num, this.updatedAt, this.image, this.isEmailLogin, this.isTester, this.createdAt});
+  UserModel(
+      {this.email,
+      this.uid,
+      this.name,
+      this.num,
+      this.updatedAt,
+      this.image,
+      this.isEmailLogin,
+      this.isTester,
+      this.createdAt});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

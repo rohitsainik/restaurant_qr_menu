@@ -9,13 +9,15 @@ class QrComponentStyleOne extends StatelessWidget {
   final String saveUrl;
   final bool isTesting;
 
-  QrComponentStyleOne({required this.isTesting, required this.qrKey, required this.saveUrl});
+  QrComponentStyleOne(
+      {required this.isTesting, required this.qrKey, required this.saveUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: context.width() - 32,
-      decoration: BoxDecoration(borderRadius: radius(16), color: context.cardColor),
+      decoration:
+          BoxDecoration(borderRadius: radius(16), color: context.cardColor),
       child: SingleChildScrollView(
         padding: EdgeInsets.only(bottom: 32, left: 16, right: 16, top: 32),
         child: Column(
@@ -38,7 +40,8 @@ class QrComponentStyleOne extends StatelessWidget {
               ),
             ),
             16.height,
-            Text(language.lblScanForOurOnlineMenu, textAlign: TextAlign.center, style: primaryTextStyle(size: 20)),
+            Text(language.lblScanForOurOnlineMenu,
+                textAlign: TextAlign.center, style: primaryTextStyle(size: 20)),
             16.height,
             RepaintBoundary(
               key: qrKey,
@@ -50,7 +53,8 @@ class QrComponentStyleOne extends StatelessWidget {
                 errorStateBuilder: (cxt, err) {
                   return Container(
                     child: Center(
-                      child: Text("${language.lblUhOhSomethingWentWrong}", textAlign: TextAlign.center),
+                      child: Text("${language.lblUhOhSomethingWentWrong}",
+                          textAlign: TextAlign.center),
                     ),
                   );
                 },

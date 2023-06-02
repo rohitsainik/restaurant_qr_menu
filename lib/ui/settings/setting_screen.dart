@@ -50,7 +50,8 @@ class SettingScreenState extends State<SettingScreen> {
           SnapHelperWidget(
             future: getPackageInfo(),
             onSuccess: (PackageInfoData snap) {
-              return Text(snap.versionName.validate(), style: secondaryTextStyle());
+              return Text(snap.versionName.validate(),
+                  style: secondaryTextStyle());
             },
           ),
           8.width,
@@ -65,12 +66,14 @@ class SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget('', color: context.scaffoldBackgroundColor, elevation: 0),
+      appBar: appBarWidget('',
+          color: context.scaffoldBackgroundColor, elevation: 0),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(language.lblSettings, style: boldTextStyle(size: 34)).paddingSymmetric(horizontal: 16),
+            Text(language.lblSettings, style: boldTextStyle(size: 34))
+                .paddingSymmetric(horizontal: 16),
             16.height,
             SettingItemWidget(
               title: '${language.lblEditProfile}',
@@ -89,7 +92,8 @@ class SettingScreenState extends State<SettingScreen> {
                 if (getBoolAsync(SharePreferencesKey.IS_EMAIL_LOGIN)) {
                   push(ChangePasswordScreen());
                 } else {
-                  toast(language.lblUserLoginWithSocialAccountCannotChangeThePassword);
+                  toast(language
+                      .lblUserLoginWithSocialAccountCannotChangeThePassword);
                 }
               },
               trailing: trailingIcon(),
@@ -102,24 +106,33 @@ class SettingScreenState extends State<SettingScreen> {
                 children: [
                   TextIcon(
                     text: selectedLanguageDataModel!.name.validate(),
-                    prefix: Image.asset(selectedLanguageDataModel!.flag.validate(), width: 24, height: 24),
+                    prefix: Image.asset(
+                        selectedLanguageDataModel!.flag.validate(),
+                        width: 24,
+                        height: 24),
                   ),
                   8.width,
                   Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 14),
                 ],
               ),
               onTap: () {
-                push(LanguageScreen(), pageRouteAnimation: PageRouteAnimation.Slide);
+                push(LanguageScreen(),
+                    pageRouteAnimation: PageRouteAnimation.Slide);
               },
             ),
             //tWg6tNJtGFMYzWy7p5GFFc7zxLy1
             Observer(
               builder: (_) => SettingItemWidget(
                 title: language.lblDarkMode,
-                leading: Icon(!appStore.isDarkMode ? Icons.dark_mode_outlined : Icons.light_mode_outlined, size: 20),
+                leading: Icon(
+                    !appStore.isDarkMode
+                        ? Icons.dark_mode_outlined
+                        : Icons.light_mode_outlined,
+                    size: 20),
                 titleTextStyle: boldTextStyle(size: 16),
                 onTap: () {
-                  push(ThemeScreen(), pageRouteAnimation: PageRouteAnimation.Slide);
+                  push(ThemeScreen(),
+                      pageRouteAnimation: PageRouteAnimation.Slide);
                 },
                 trailing: trailingIcon(),
               ),
@@ -202,7 +215,8 @@ class SettingScreenState extends State<SettingScreen> {
               onTap: () {
                 showConfirmDialogCustom(
                   context,
-                  primaryColor: appStore.isDarkMode ? Colors.white : primaryColor,
+                  primaryColor:
+                      appStore.isDarkMode ? Colors.white : primaryColor,
                   dialogType: DialogType.CONFIRMATION,
                   title: '${language.lblAreYouSureYouWantToLogout}?',
                   onAccept: (context) {

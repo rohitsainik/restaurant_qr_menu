@@ -44,7 +44,9 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
       appStore.setLoading(true);
       setState(() {});
 
-      await authService.changePassword(newPassCont.text.trim()).then((value) async {
+      await authService
+          .changePassword(newPassCont.text.trim())
+          .then((value) async {
         finish(context);
         toast(language.lblPasswordSuccessfullyChanged);
       }).catchError((e) {
@@ -84,15 +86,21 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     AppTextField(
                       controller: oldPassCont,
                       textFieldType: TextFieldType.PASSWORD,
-                      decoration: inputDecoration(context, label: "${language.lblOldPassword}").copyWith(
-                        prefixIcon: IconButton(onPressed: null, icon: Icon(Icons.password, color: secondaryIconColor)),
+                      decoration: inputDecoration(context,
+                              label: "${language.lblOldPassword}")
+                          .copyWith(
+                        prefixIcon: IconButton(
+                            onPressed: null,
+                            icon: Icon(Icons.password,
+                                color: secondaryIconColor)),
                       ),
                       nextFocus: newPassFocus,
                       textStyle: primaryTextStyle(),
                       autoFillHints: [AutofillHints.password],
                       validator: (String? s) {
                         if (s!.isEmpty) return errorThisFieldRequired;
-                        if (s != getStringAsync(SharePreferencesKey.PASSWORD)) return '${language.lblOldPasswordIsNotCorrect}';
+                        if (s != getStringAsync(SharePreferencesKey.PASSWORD))
+                          return '${language.lblOldPasswordIsNotCorrect}';
 
                         return null;
                       },
@@ -101,7 +109,9 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     AppTextField(
                       controller: newPassCont,
                       textFieldType: TextFieldType.PASSWORD,
-                      decoration: inputDecoration(context, label: '${language.lblNewPassword}').copyWith(
+                      decoration: inputDecoration(context,
+                              label: '${language.lblNewPassword}')
+                          .copyWith(
                         prefixIcon: IconButton(
                           onPressed: null,
                           icon: Icon(Icons.password, color: secondaryIconColor),
@@ -116,15 +126,23 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     AppTextField(
                       controller: confNewPassCont,
                       textFieldType: TextFieldType.PASSWORD,
-                      decoration: inputDecoration(context, label: '${language.lblConfirmPassword}').copyWith(
-                        prefixIcon: IconButton(onPressed: null, icon: Icon(Icons.password, color: secondaryIconColor)),
+                      decoration: inputDecoration(context,
+                              label: '${language.lblConfirmPassword}')
+                          .copyWith(
+                        prefixIcon: IconButton(
+                            onPressed: null,
+                            icon: Icon(Icons.password,
+                                color: secondaryIconColor)),
                       ),
                       focus: confPassFocus,
                       validator: (String? value) {
                         if (value!.isEmpty) return errorThisFieldRequired;
-                        if (value.length < passwordLengthGlobal) return '${language.lblPasswordLengthShouldBeMoreThanSix}';
-                        if (value.trim() != newPassCont.text.trim()) return '${language.lblBothPasswordShouldBeMatched}';
-                        if (value.trim() == oldPassCont.text.trim()) return '${language.lblOldPasswordShouldNotBeSameAsNewPassword}';
+                        if (value.length < passwordLengthGlobal)
+                          return '${language.lblPasswordLengthShouldBeMoreThanSix}';
+                        if (value.trim() != newPassCont.text.trim())
+                          return '${language.lblBothPasswordShouldBeMatched}';
+                        if (value.trim() == oldPassCont.text.trim())
+                          return '${language.lblOldPasswordShouldNotBeSameAsNewPassword}';
 
                         return null;
                       },
@@ -144,7 +162,10 @@ class ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       },
                       text: language.lblSave,
                       width: context.width(),
-                      textStyle: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+                      textStyle: boldTextStyle(
+                          color: appStore.isDarkMode
+                              ? Colors.black
+                              : Colors.white),
                     ),
                   ],
                 ),

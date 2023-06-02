@@ -72,12 +72,15 @@ class Urls {
   static const appDescription = "";
   static const copyRight = 'copyright @editorschamber';
   static const packageName = "com.ed.myrestroqr";
-  static const termsAndConditionURL = 'https://wordpress.iqonic.design/docs/product/qr-menu/help-and-support/';
+  static const termsAndConditionURL =
+      'https://wordpress.iqonic.design/docs/product/qr-menu/help-and-support/';
   static const supportURL = 'https://iqonic.desky.support/';
-  static const codeCanyonURL = 'https://codecanyon.net/item/restaurant-qr-menu-flutter-app-with-firebase-backend/34377503?s_rank=1';
+  static const codeCanyonURL =
+      'https://codecanyon.net/item/restaurant-qr-menu-flutter-app-with-firebase-backend/34377503?s_rank=1';
   static const appShareURL = '$playStoreBaseURL$packageName';
   static const mailto = 'hello@iqonic.design';
-  static const documentation = 'https://wordpress.iqonic.design/docs/product/qrmenu/';
+  static const documentation =
+      'https://wordpress.iqonic.design/docs/product/qrmenu/';
   static const privacyPolicyURL = 'https://iqonic.design/privacy/';
 }
 

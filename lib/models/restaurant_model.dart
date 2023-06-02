@@ -54,7 +54,9 @@ class RestaurantModel {
       logoImage: json[Restaurants.logoImage],
       newItemForDays: json[Restaurants.newItemForDays],
       //menuStyle: json[Restaurants.menuStyle],
-      menuStyle: json[Restaurants.menuStyle] != null ? json[Restaurants.menuStyle] : AppConstant.defaultMenuStyle,
+      menuStyle: json[Restaurants.menuStyle] != null
+          ? json[Restaurants.menuStyle]
+          : AppConstant.defaultMenuStyle,
       userId: json[Restaurants.userId],
       isVeg: json[Restaurants.isVeg],
       isNonVeg: json[Restaurants.isNonVeg],

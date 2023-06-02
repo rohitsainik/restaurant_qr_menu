@@ -19,7 +19,8 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBarWidget(language.lblAbout, color: context.scaffoldBackgroundColor),
+        appBar: appBarWidget(language.lblAbout,
+            color: context.scaffoldBackgroundColor),
         body: SnapHelperWidget<PackageInfoData>(
           future: getPackageInfo(),
           onSuccess: (data) => Container(
@@ -29,7 +30,8 @@ class _AboutScreenState extends State<AboutScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(language.lblRestaurantQRMenu, style: boldTextStyle(size: 25)),
+                Text(language.lblRestaurantQRMenu,
+                    style: boldTextStyle(size: 25)),
                 16.height,
                 isWeb
                     ? Container(
@@ -38,7 +40,11 @@ class _AboutScreenState extends State<AboutScreen> {
                         constraints: BoxConstraints(maxWidth: 400),
                         color: primaryColor,
                       )
-                    : Divider(height: 16, thickness: 4, color: primaryColor, endIndent: 250),
+                    : Divider(
+                        height: 16,
+                        thickness: 4,
+                        color: primaryColor,
+                        endIndent: 250),
                 16.height,
                 Text('${language.lblVersion}:', style: boldTextStyle()),
                 Text(data.versionName.validate(), style: primaryTextStyle()),
@@ -55,7 +61,8 @@ class _AboutScreenState extends State<AboutScreen> {
                     children: [
                       Icon(Icons.shopping_cart, color: white),
                       4.width,
-                      Text(language.lblPurchase, style: boldTextStyle(color: white)),
+                      Text(language.lblPurchase,
+                          style: boldTextStyle(color: white)),
                     ],
                   ),
                 ),

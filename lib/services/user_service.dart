@@ -7,9 +7,10 @@ import 'package:qr_menu/utils/model_keys.dart';
 class UserService extends BaseService<UserModel> {
   UserService() {
     ref = fireStore.collection(Collections.user).withConverter<UserModel>(
-      fromFirestore: (snapshot, options) => UserModel.fromJson(snapshot.data()!),
-      toFirestore: (value, options) => value.toJson(),
-    );
+          fromFirestore: (snapshot, options) =>
+              UserModel.fromJson(snapshot.data()!),
+          toFirestore: (value, options) => value.toJson(),
+        );
   }
 
   Future<bool> isUserExist(String? email) async {
@@ -20,7 +21,11 @@ class UserService extends BaseService<UserModel> {
   }
 
   Future<UserModel> userByEmail(String? email) async {
-    return ref!.limit(1).where('email', isEqualTo: email).get().then((value) => value.docs.first.data());
+    return ref!
+        .limit(1)
+        .where('email', isEqualTo: email)
+        .get()
+        .then((value) => value.docs.first.data());
   }
 
   Future<UserModel> getUser({String? email}) {
@@ -33,5 +38,3 @@ class UserService extends BaseService<UserModel> {
     });
   }
 }
-
-

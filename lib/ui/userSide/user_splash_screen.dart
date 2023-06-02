@@ -26,12 +26,14 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
   Future<void> init() async {
     afterBuildCreated(() {
       appStore.setLanguage(
-        getStringAsync(SharePreferencesKey.Language, defaultValue: AppConstant.defaultLanguage),
+        getStringAsync(SharePreferencesKey.Language,
+            defaultValue: AppConstant.defaultLanguage),
         context: context,
       );
     });
     await 2.seconds.delay;
-    UserMenuListingScreen(id: widget.result.validate()).launch(context, isNewTask: true);
+    UserMenuListingScreen(id: widget.result.validate())
+        .launch(context, isNewTask: true);
   }
 
   @override
@@ -49,12 +51,16 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              appStore.isDarkMode ? AppImages.app_logo : AppImages.app_logo_dark,
+              appStore.isDarkMode
+                  ? AppImages.app_logo
+                  : AppImages.app_logo_dark,
               height: 150,
               width: 150,
             ).cornerRadiusWithClipRRect(defaultRadius),
             26.height,
-            Text(AppConstant.appName, style: boldTextStyle(size: 30, fontFamily: GoogleFonts.roboto().fontFamily)),
+            Text(AppConstant.appName,
+                style: boldTextStyle(
+                    size: 30, fontFamily: GoogleFonts.roboto().fontFamily)),
           ],
         ),
       ).center(),

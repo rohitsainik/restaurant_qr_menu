@@ -32,9 +32,11 @@ class _WalkThroughContainer3State extends State<WalkThroughContainer3> {
           mainAxisSize: MainAxisSize.min,
           children: [
             50.height,
-            Image.asset(AppImages.theme, height: 300, width: 300).cornerRadiusWithClipRRect(16),
+            Image.asset(AppImages.theme, height: 300, width: 300)
+                .cornerRadiusWithClipRRect(16),
             40.height,
-            Text(language.lblSelectTheme.toUpperCase(), style: boldTextStyle(size: 20)),
+            Text(language.lblSelectTheme.toUpperCase(),
+                style: boldTextStyle(size: 20)),
             16.height,
             Text(
               language.lblSelectThemeDesc,
@@ -49,13 +51,16 @@ class _WalkThroughContainer3State extends State<WalkThroughContainer3> {
               items: ThemeMode.values.map((e) {
                 int index = ThemeMode.values.indexOf(e);
                 return DropdownMenuItem<int>(
-                  child: Text('${_getName(ThemeModes.values[index])}', style: primaryTextStyle()),
+                  child: Text('${_getName(ThemeModes.values[index])}',
+                      style: primaryTextStyle()),
                   value: index,
                 );
               }).toList(),
               onChanged: (int? v) {
                 if (v == AppThemeMode.ThemeModeSystem) {
-                  appStore.setDarkMode(MediaQuery.of(context).platformBrightness == Brightness.dark);
+                  appStore.setDarkMode(
+                      MediaQuery.of(context).platformBrightness ==
+                          Brightness.dark);
                 } else if (v == AppThemeMode.ThemeModeLight) {
                   appStore.setDarkMode(false);
                 } else if (v == AppThemeMode.ThemeModeDark) {

@@ -1,4 +1,3 @@
-
 class MenuStyleModel {
   String? styleName;
 

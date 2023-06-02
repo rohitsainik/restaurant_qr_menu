@@ -9,7 +9,13 @@ class CategoryModel {
   Timestamp? createdAt;
   Timestamp? updatedAt;
 
-  CategoryModel({this.description, this.updatedAt, this.createdAt, this.image, this.name, this.uid});
+  CategoryModel(
+      {this.description,
+      this.updatedAt,
+      this.createdAt,
+      this.image,
+      this.name,
+      this.uid});
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(

@@ -16,7 +16,6 @@ class QrGenerateScreen extends StatefulWidget {
 }
 
 class _QrGenerateScreenState extends State<QrGenerateScreen> {
-
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   String saveUrl = "";
@@ -37,7 +36,9 @@ class _QrGenerateScreenState extends State<QrGenerateScreen> {
   }
 
   void getScreenShot() async {
-    screenshotController.capture(delay: const Duration(milliseconds: 10)).then((Uint8List? image) async {
+    screenshotController
+        .capture(delay: const Duration(milliseconds: 10))
+        .then((Uint8List? image) async {
       if (image != null) {
         final directory = await getApplicationDocumentsDirectory();
         final imagePath = await File('${directory.path}/image.png').create();
@@ -59,19 +60,25 @@ class _QrGenerateScreenState extends State<QrGenerateScreen> {
           '${selectedRestaurant.name.validate()} ${language.lblQR} ',
           color: context.scaffoldBackgroundColor,
           actions: [
-            !isWeb ? IconButton(
-              icon: Icon(Icons.share, color: context.iconColor),
-              onPressed: () {
-                getScreenShot();
-              },
-            ) : Offstage(),
+            !isWeb
+                ? IconButton(
+                    icon: Icon(Icons.share, color: context.iconColor),
+                    onPressed: () {
+                      getScreenShot();
+                    },
+                  )
+                : Offstage(),
             16.width,
           ],
         ),
-        backgroundColor: appStore.selectedQrStyle == language.lblQrStyle3 ? (appStore.isDarkMode ? Colors.white24 : Colors.white70.withOpacity(0.92)) :context.cardColor,
+        backgroundColor: appStore.selectedQrStyle == language.lblQrStyle3
+            ? (appStore.isDarkMode
+                ? Colors.white24
+                : Colors.white70.withOpacity(0.92))
+            : context.cardColor,
         body: Screenshot(
           controller: screenshotController,
-          child: getQrStyleWidget(isTesting,qrKey,saveUrl),
+          child: getQrStyleWidget(isTesting, qrKey, saveUrl),
         ),
       ),
     );

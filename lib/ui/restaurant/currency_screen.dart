@@ -28,7 +28,8 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
   void init() async {
     isUpdate = widget.selectedCurrency != null;
     if (isUpdate) {
-      selectedIndex = data.indexWhere((element) => element.symbol == widget.selectedCurrency!.symbol.validate());
+      selectedIndex = data.indexWhere((element) =>
+          element.symbol == widget.selectedCurrency!.symbol.validate());
     }
   }
 
@@ -103,8 +104,10 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                 ),
                 child: Row(
                   children: [
-                    Text(currentData.name.validate(), style: boldTextStyle()).expand(),
-                    Text(currentData.symbol.validate(), style: boldTextStyle()).center(),
+                    Text(currentData.name.validate(), style: boldTextStyle())
+                        .expand(),
+                    Text(currentData.symbol.validate(), style: boldTextStyle())
+                        .center(),
                   ],
                 ),
               ).onTap(

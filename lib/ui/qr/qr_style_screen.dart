@@ -19,7 +19,8 @@ class _QrStyleScreenState extends State<QrStyleScreen> {
 
   @override
   void initState() {
-    selectedIndex = data.indexWhere((element) => element.styleName == appStore.selectedQrStyle);
+    selectedIndex = data
+        .indexWhere((element) => element.styleName == appStore.selectedQrStyle);
 
     super.initState();
   }
@@ -42,7 +43,11 @@ class _QrStyleScreenState extends State<QrStyleScreen> {
             return Container(
               decoration: BoxDecoration(
                 borderRadius: radius(defaultRadius),
-                color: index == selectedIndex ? (appStore.isDarkMode ? Colors.white54 : primaryColor.withAlpha(40)) : context.cardColor,
+                color: index == selectedIndex
+                    ? (appStore.isDarkMode
+                        ? Colors.white54
+                        : primaryColor.withAlpha(40))
+                    : context.cardColor,
                 border: Border.all(color: context.dividerColor),
               ),
               width: context.width() / 2 - 24,

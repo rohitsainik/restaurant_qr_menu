@@ -62,7 +62,9 @@ class MenuModel {
       status: json[Menus.status],
       name: json[Menus.name],
       price: json[Menus.price],
-      ingredient: json[Menus.ingredient] != null ? new List<String>.from(json[Menus.ingredient]) : null,
+      ingredient: json[Menus.ingredient] != null
+          ? new List<String>.from(json[Menus.ingredient])
+          : null,
       createdAt: json[CommonKeys.createdAt],
       updatedAt: json[CommonKeys.updatedAt],
     );

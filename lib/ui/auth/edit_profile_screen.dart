@@ -46,7 +46,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
 
   Future<void> init() async {
     appStore.setLoading(true);
-    await userService.userByEmail(getStringAsync(SharePreferencesKey.USER_EMAIL)).then((value) {
+    await userService
+        .userByEmail(getStringAsync(SharePreferencesKey.USER_EMAIL))
+        .then((value) {
       currentUser = value;
       emailCont.text = value.email.validate();
       nameCont.text = value.name.validate();
@@ -71,7 +73,8 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     data.name = nameCont.text;
     data.num = numCont.text;
     if (image != null) {
-      data.image = await BaseService.getUploadedImageURL(image!, currentUser.uid.validate());
+      data.image = await BaseService.getUploadedImageURL(
+          image!, currentUser.uid.validate());
     } else {
       data.image = currentUser.image;
     }
@@ -81,7 +84,10 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     data.createdAt = currentUser.createdAt;
     data.uid = currentUser.uid;
 
-    userService.ref!.doc(getStringAsync(SharePreferencesKey.USER_ID)).set(data).then((value) {
+    userService.ref!
+        .doc(getStringAsync(SharePreferencesKey.USER_ID))
+        .set(data)
+        .then((value) {
       setValue(SharePreferencesKey.USER_NAME, data.name.validate());
       setValue(SharePreferencesKey.USER_NUMBER, data.num.validate());
       setValue(SharePreferencesKey.USER_EMAIL, data.email.validate());
@@ -115,13 +121,16 @@ class EditProfileScreenState extends State<EditProfileScreen> {
             );
           });
         },
-        icon: Icon(Icons.save, color: appStore.isDarkMode ? Colors.black : Colors.white),
+        icon: Icon(Icons.save,
+            color: appStore.isDarkMode ? Colors.black : Colors.white),
         label: Text(
           language.lblSave,
-          style: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+          style: boldTextStyle(
+              color: appStore.isDarkMode ? Colors.black : Colors.white),
         ),
       ),
-      appBar: appBarWidget('${language.lblEditProfile}', color: context.scaffoldBackgroundColor),
+      appBar: appBarWidget('${language.lblEditProfile}',
+          color: context.scaffoldBackgroundColor),
       body: Stack(
         children: [
           Observer(
@@ -158,8 +167,11 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             controller: nameCont,
                             nextFocus: contactFocus,
                             textFieldType: TextFieldType.NAME,
-                            decoration: inputDecoration(context, label: '${language.lblName}').copyWith(
-                              prefixIcon: Icon(Icons.person_outline, color: secondaryIconColor),
+                            decoration: inputDecoration(context,
+                                    label: '${language.lblName}')
+                                .copyWith(
+                              prefixIcon: Icon(Icons.person_outline,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           16.height,
@@ -169,9 +181,16 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             focus: contactFocus,
                             maxLength: 12,
                             textFieldType: TextFieldType.PHONE,
-                            buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
-                            decoration: inputDecoration(context, label: '${language.lblNumber}').copyWith(
-                              prefixIcon: Icon(LineIcons.phone, color: secondaryIconColor),
+                            buildCounter: (context,
+                                    {required currentLength,
+                                    required isFocused,
+                                    maxLength}) =>
+                                null,
+                            decoration: inputDecoration(context,
+                                    label: '${language.lblNumber}')
+                                .copyWith(
+                              prefixIcon: Icon(LineIcons.phone,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           16.height,
@@ -181,8 +200,11 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             readOnly: true,
                             textFieldType: TextFieldType.EMAIL,
                             enabled: currentUser.isEmailLogin,
-                            decoration: inputDecoration(context, label: '${language.lblEmail}').copyWith(
-                              prefixIcon: Icon(Icons.email_outlined, color: secondaryIconColor),
+                            decoration: inputDecoration(context,
+                                    label: '${language.lblEmail}')
+                                .copyWith(
+                              prefixIcon: Icon(Icons.email_outlined,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           32.height,

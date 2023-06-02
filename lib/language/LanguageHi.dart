@@ -32,7 +32,8 @@ class LanguageHi extends BaseLanguage {
   String get lblCategories => "श्रेणियाँ";
 
   @override
-  String get lblLongPressOnCategoryForMoreOptions => "अधिक विकल्पों के लिए श्रेणी पर लंबे समय तक दबाएं।";
+  String get lblLongPressOnCategoryForMoreOptions =>
+      "अधिक विकल्पों के लिए श्रेणी पर लंबे समय तक दबाएं।";
 
   @override
   String get lblA => "ए";
@@ -56,7 +57,8 @@ class LanguageHi extends BaseLanguage {
   String get lblForgetPassword => "पासवर्ड भूल गया?";
 
   @override
-  String get lblEnterYouEmail => "एक रीसेट पासवर्ड लिंक ऊपर दर्ज किए गए ईमेल पते पर भेजा जाएगा";
+  String get lblEnterYouEmail =>
+      "एक रीसेट पासवर्ड लिंक ऊपर दर्ज किए गए ईमेल पते पर भेजा जाएगा";
 
   @override
   String get lblEmail => "ईमेल";
@@ -68,7 +70,8 @@ class LanguageHi extends BaseLanguage {
   String get lblResetPassword => "पासवर्ड रीसेट";
 
   @override
-  String get lblResetPasswordLinkHasSentYourMail => "रीसेट पासवर्ड लिंक ने आपका मेल भेजा है";
+  String get lblResetPasswordLinkHasSentYourMail =>
+      "रीसेट पासवर्ड लिंक ने आपका मेल भेजा है";
 
   @override
   String get lblEnable => "सक्षम";
@@ -163,7 +166,8 @@ class LanguageHi extends BaseLanguage {
   String get lblDoYouWantToUpdate => "क्या आप अपडेट करना चाहते हैं";
 
   @override
-  String get lblDoYouWantToAddThisCategory => "क्या आप इस श्रेणी को जोड़ना चाहते हैं";
+  String get lblDoYouWantToAddThisCategory =>
+      "क्या आप इस श्रेणी को जोड़ना चाहते हैं";
 
   @override
   String get lblDescription => "विवरण";
@@ -175,7 +179,8 @@ class LanguageHi extends BaseLanguage {
   String get lblDoYouWantToDelete => "क्या आप हटाना चाहते हैं";
 
   @override
-  String get lblDoYouWantToAddThisMenuItem => "क्या आप इस मेनू आइटम को जोड़ना चाहते हैं";
+  String get lblDoYouWantToAddThisMenuItem =>
+      "क्या आप इस मेनू आइटम को जोड़ना चाहते हैं";
 
   @override
   String get lblPleaseChooseCategory => "कृपया श्रेणी चुनें";
@@ -190,16 +195,19 @@ class LanguageHi extends BaseLanguage {
   String get lblIngredients => "अवयव";
 
   @override
-  String get lblNewDescription => "अपने स्वाद कलियों को झुकाव के लिए पकाए गए नए व्यंजनों और व्यंजनों के अनन्य चयन का अन्वेषण करें";
+  String get lblNewDescription =>
+      "अपने स्वाद कलियों को झुकाव के लिए पकाए गए नए व्यंजनों और व्यंजनों के अनन्य चयन का अन्वेषण करें";
 
   @override
   String get lblVeg => "शाकाहारी";
 
   @override
-  String get lblVegDescription => "सब्जियों के विदेशी संग्रह से चुनें, हलचल और sautéed फेंक दिया और पूर्णता के साथ पकाया";
+  String get lblVegDescription =>
+      "सब्जियों के विदेशी संग्रह से चुनें, हलचल और sautéed फेंक दिया और पूर्णता के साथ पकाया";
 
   @override
-  String get lblSpicyDescription => "गर्म और तेजस्वी, यदि आप मसालेदार व्यंजन के प्रशंसक हैं, तो व्यंजनों की विशेष मसालेदार श्रृंखला देखें।";
+  String get lblSpicyDescription =>
+      "गर्म और तेजस्वी, यदि आप मसालेदार व्यंजन के प्रशंसक हैं, तो व्यंजनों की विशेष मसालेदार श्रृंखला देखें।";
 
   @override
   String get lblJainDescription =>
@@ -213,7 +221,8 @@ class LanguageHi extends BaseLanguage {
   String get lblSweet => "मिठाई";
 
   @override
-  String get lblSweetDescription => "मिठाई के बिना एक भोजन अपूर्ण है, हमारे सबसे प्यारे मिठाई संग्रह के साथ अपनी इंद्रियों को टैंटलाइज़ करें";
+  String get lblSweetDescription =>
+      "मिठाई के बिना एक भोजन अपूर्ण है, हमारे सबसे प्यारे मिठाई संग्रह के साथ अपनी इंद्रियों को टैंटलाइज़ करें";
 
   @override
   String get lblPopularDescription =>
@@ -232,7 +241,8 @@ class LanguageHi extends BaseLanguage {
   String get lblAddRestaurant => "रेस्तरां जोड़ें";
 
   @override
-  String get lblDoYouWantToUpdateRestaurant => "क्या आप रेस्तरां अपडेट करना चाहते हैं";
+  String get lblDoYouWantToUpdateRestaurant =>
+      "क्या आप रेस्तरां अपडेट करना चाहते हैं";
 
   @override
   String get lblDoYouWantToAddRestaurant => "क्या आप रेस्तरां जोड़ना चाहते हैं";
@@ -256,7 +266,8 @@ class LanguageHi extends BaseLanguage {
   String get lblAddress => "पता";
 
   @override
-  String get lblPasswordSuccessfullyChanged => "पासवर्ड सफलतापूर्वक बदल दिया है";
+  String get lblPasswordSuccessfullyChanged =>
+      "पासवर्ड सफलतापूर्वक बदल दिया है";
 
   @override
   String get lblOldPassword => "पुराना पासवर्ड";
@@ -274,13 +285,16 @@ class LanguageHi extends BaseLanguage {
   String get lblConfirmPassword => "पासवर्ड की पुष्टि कीजिये";
 
   @override
-  String get lblPasswordLengthShouldBeMoreThanSix => "पासवर्ड की लंबाई छह से अधिक होनी चाहिए";
+  String get lblPasswordLengthShouldBeMoreThanSix =>
+      "पासवर्ड की लंबाई छह से अधिक होनी चाहिए";
 
   @override
-  String get lblBothPasswordShouldBeMatched => "दोनों पासवर्ड से मेल खाना चाहिए";
+  String get lblBothPasswordShouldBeMatched =>
+      "दोनों पासवर्ड से मेल खाना चाहिए";
 
   @override
-  String get lblOldPasswordShouldNotBeSameAsNewPassword => "पुराना पासवर्ड नए पासवर्ड के समान नहीं होना चाहिए";
+  String get lblOldPasswordShouldNotBeSameAsNewPassword =>
+      "पुराना पासवर्ड नए पासवर्ड के समान नहीं होना चाहिए";
 
   @override
   String get lblSave => "सहेजें";
@@ -298,7 +312,8 @@ class LanguageHi extends BaseLanguage {
   String get lblDataUpdated => "डेटा अद्यतन";
 
   @override
-  String get lbDoYouWantToUpdateProfile => "क्या आप प्रोफ़ाइल अपडेट करना चाहते हैं";
+  String get lbDoYouWantToUpdateProfile =>
+      "क्या आप प्रोफ़ाइल अपडेट करना चाहते हैं";
 
   @override
   String get lblEditProfile => "प्रोफ़ाइल संपादित करें";
@@ -328,13 +343,15 @@ class LanguageHi extends BaseLanguage {
   String get lblNoPermission => "अनुमति नहीं";
 
   @override
-  String get lblDoYouWantToDeleteRestaurant => "क्या आप रेस्तरां को हटाना चाहते हैं";
+  String get lblDoYouWantToDeleteRestaurant =>
+      "क्या आप रेस्तरां को हटाना चाहते हैं";
 
   @override
   String get lblSettings => "समायोजन";
 
   @override
-  String get lblUserLoginWithSocialAccountCannotChangeThePassword => "सामाजिक खाते के साथ उपयोगकर्ता लॉगिन पासवर्ड नहीं बदल सकता है";
+  String get lblUserLoginWithSocialAccountCannotChangeThePassword =>
+      "सामाजिक खाते के साथ उपयोगकर्ता लॉगिन पासवर्ड नहीं बदल सकता है";
 
   @override
   String get lblDarkMode => "डार्क मोड";
@@ -422,7 +439,8 @@ class LanguageHi extends BaseLanguage {
   String get lblWaitToScan => "स्कैन करने की प्रतीक्षा करें";
 
   @override
-  String get lblUserAlreadyRegisterWithEmail => "उपयोगकर्ता पहले ही ईमेल के साथ पंजीकृत है";
+  String get lblUserAlreadyRegisterWithEmail =>
+      "उपयोगकर्ता पहले ही ईमेल के साथ पंजीकृत है";
 
   @override
   String get lblWrongURL => "गलत यूआरएल";

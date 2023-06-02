@@ -25,7 +25,8 @@ class _MenuStyleScreenState extends State<MenuStyleScreen> {
 
   @override
   void initState() {
-    selectedIndex = data.indexWhere((element) => element.styleName == appStore.selectedMenuStyle);
+    selectedIndex = data.indexWhere(
+        (element) => element.styleName == appStore.selectedMenuStyle);
     super.initState();
   }
 
@@ -35,7 +36,9 @@ class _MenuStyleScreenState extends State<MenuStyleScreen> {
 
     appStore.setLoading(true);
 
-    await restaurantOwnerService.getRestaurantListFuture().then((resList) async {
+    await restaurantOwnerService
+        .getRestaurantListFuture()
+        .then((resList) async {
       await Future.forEach<RestaurantModel>(resList, (element) async {
         Map<String, dynamic> data = {
           CommonKeys.updatedAt: Timestamp.now(),
@@ -44,7 +47,9 @@ class _MenuStyleScreenState extends State<MenuStyleScreen> {
 
         selectedRestaurant.menuStyle = menuStyle;
 
-        await restaurantOwnerService.updateDocument(data, element.uid).then((_) {
+        await restaurantOwnerService
+            .updateDocument(data, element.uid)
+            .then((_) {
           //
         }).catchError((e) {
           log(e);
@@ -88,7 +93,11 @@ class _MenuStyleScreenState extends State<MenuStyleScreen> {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: radius(defaultRadius),
-                  color: index == selectedIndex ? (appStore.isDarkMode ? Colors.white54 : primaryColor.withAlpha(40)) : context.cardColor,
+                  color: index == selectedIndex
+                      ? (appStore.isDarkMode
+                          ? Colors.white54
+                          : primaryColor.withAlpha(40))
+                      : context.cardColor,
                   border: Border.all(color: context.dividerColor),
                 ),
                 width: context.width() / 2 - 24,

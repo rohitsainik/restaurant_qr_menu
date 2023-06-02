@@ -16,7 +16,8 @@ class RestaurantCardComponent extends StatefulWidget {
   RestaurantCardComponent({required this.data});
 
   @override
-  State<RestaurantCardComponent> createState() => _RestaurantCardComponentState();
+  State<RestaurantCardComponent> createState() =>
+      _RestaurantCardComponentState();
 }
 
 class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
@@ -24,7 +25,11 @@ class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
     double size = 20;
     if (isNonVeg && isVeg) {
       return Row(
-        children: [VegComponent(size: size), 8.width, NonVegComponent(size: size)],
+        children: [
+          VegComponent(size: size),
+          8.width,
+          NonVegComponent(size: size)
+        ],
       );
     } else if (isVeg) {
       return VegComponent(size: size);
@@ -50,7 +55,9 @@ class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
         children: [
           widget.data.image!.isNotEmpty
               ? cachedImage(
-                  widget.data.image.validate(value: "https://image.freepik.com/free-photo/indian-condiments-with-copy-space-view_23-2148723492.jpg"),
+                  widget.data.image.validate(
+                      value:
+                          "https://image.freepik.com/free-photo/indian-condiments-with-copy-space-view_23-2148723492.jpg"),
                   height: 250,
                   width: context.width(),
                   fit: BoxFit.cover,
@@ -80,12 +87,15 @@ class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${widget.data.name}', style: boldTextStyle(size: 20, color: Colors.white)),
+                        Text('${widget.data.name}',
+                            style:
+                                boldTextStyle(size: 20, color: Colors.white)),
                         4.height,
                         if (widget.data.description.isEmptyOrNull)
                           Text(
                             '${widget.data.description}',
-                            style: secondaryTextStyle(color: Colors.white70, size: 14),
+                            style: secondaryTextStyle(
+                                color: Colors.white70, size: 14),
                           ),
                       ],
                     ).expand(),
@@ -95,31 +105,43 @@ class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
                 Row(
                   children: [
                     StreamBuilder(
-                      stream: CategoryService.getTotalCategories(restaurantId: widget.data.uid),
+                      stream: CategoryService.getTotalCategories(
+                          restaurantId: widget.data.uid),
                       builder: (_, snap) {
                         if (snap.hasData) {
                           return Column(
                             children: [
-                              Text('${snap.data.toString()}', style: boldTextStyle(color: Colors.white, size: 20)),
-                              Text(language.lblCategories, style: primaryTextStyle(size: 16, color: Colors.white)),
+                              Text('${snap.data.toString()}',
+                                  style: boldTextStyle(
+                                      color: Colors.white, size: 20)),
+                              Text(language.lblCategories,
+                                  style: primaryTextStyle(
+                                      size: 16, color: Colors.white)),
                             ],
                           );
                         }
-                        return snapWidgetHelper(snap, loadingWidget: Offstage());
+                        return snapWidgetHelper(snap,
+                            loadingWidget: Offstage());
                       },
                     ).expand(),
                     StreamBuilder(
-                      stream: MenuService.getTotalMenus(restaurantId: widget.data.uid),
+                      stream: MenuService.getTotalMenus(
+                          restaurantId: widget.data.uid),
                       builder: (_, snap) {
                         if (snap.hasData) {
                           return Column(
                             children: [
-                              Text('${snap.data.toString()}', style: boldTextStyle(color: Colors.white, size: 20)),
-                              Text(language.lblFoodItems, style: primaryTextStyle(size: 16, color: Colors.white)),
+                              Text('${snap.data.toString()}',
+                                  style: boldTextStyle(
+                                      color: Colors.white, size: 20)),
+                              Text(language.lblFoodItems,
+                                  style: primaryTextStyle(
+                                      size: 16, color: Colors.white)),
                             ],
                           );
                         }
-                        return snapWidgetHelper(snap, loadingWidget: Offstage());
+                        return snapWidgetHelper(snap,
+                            loadingWidget: Offstage());
                       },
                     ).expand(),
                   ],
@@ -132,8 +154,11 @@ class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
             right: 16,
             child: Container(
               padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(borderRadius: radius(8), color: context.cardColor),
-              child: checkRestaurantType(isVeg: widget.data.isVeg.validate(), isNonVeg: widget.data.isNonVeg.validate()),
+              decoration: BoxDecoration(
+                  borderRadius: radius(8), color: context.cardColor),
+              child: checkRestaurantType(
+                  isVeg: widget.data.isVeg.validate(),
+                  isNonVeg: widget.data.isNonVeg.validate()),
             ),
           ),
         ],
@@ -142,7 +167,8 @@ class _RestaurantCardComponentState extends State<RestaurantCardComponent> {
       log('.............${widget.data.uid}');
       menuService = MenuService(restaurantId: widget.data.uid);
       menuStore.setSelectedCategoryData(null);
-      push(ResDetailScreen(data: widget.data), pageRouteAnimation: PageRouteAnimation.Slide);
+      push(ResDetailScreen(data: widget.data),
+          pageRouteAnimation: PageRouteAnimation.Slide);
     }, borderRadius: radius(defaultRadius));
   }
 }

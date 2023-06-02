@@ -23,13 +23,22 @@ Widget getCategoryTextWidget(int length) {
         Container(
           transform: new Matrix4.identity()..rotateZ(2 * 3.14 / 180),
           padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(border: Border.all(color: appStore.isDarkMode ? Colors.white12 : viewLineColor, width: 3)),
-          child: Text('${language.lblCategories} (${length})', style: boldTextStyle(size: 21, color: Colors.transparent)),
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: appStore.isDarkMode ? Colors.white12 : viewLineColor,
+                  width: 3)),
+          child: Text('${language.lblCategories} (${length})',
+              style: boldTextStyle(size: 21, color: Colors.transparent)),
         ),
         Container(
           padding: EdgeInsets.all(6),
-          decoration: BoxDecoration(border: Border.all(color: appStore.isDarkMode ? Colors.white12 : viewLineColor, width: 3)),
-          child: Text('${language.lblCategories} (${length})', style: boldTextStyle(size: 20, fontFamily: GoogleFonts.aclonica().fontFamily)),
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: appStore.isDarkMode ? Colors.white12 : viewLineColor,
+                  width: 3)),
+          child: Text('${language.lblCategories} (${length})',
+              style: boldTextStyle(
+                  size: 20, fontFamily: GoogleFonts.aclonica().fontFamily)),
         )
       ],
     );
@@ -38,23 +47,33 @@ Widget getCategoryTextWidget(int length) {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${language.lblCategories} (${length})', style: boldTextStyle(size: 20, fontFamily: GoogleFonts.gloriaHallelujah().fontFamily)),
-        Image.asset('images/ic_line.png', width: 100, color: appStore.isDarkMode ? Colors.white : Colors.black),
+        Text('${language.lblCategories} (${length})',
+            style: boldTextStyle(
+                size: 20,
+                fontFamily: GoogleFonts.gloriaHallelujah().fontFamily)),
+        Image.asset('images/ic_line.png',
+            width: 100,
+            color: appStore.isDarkMode ? Colors.white : Colors.black),
         16.height,
       ],
     );
   } else {
-    return Text('${language.lblCategories} (${length})', style: boldTextStyle(size: 20));
+    return Text('${language.lblCategories} (${length})',
+        style: boldTextStyle(size: 20));
   }
 }
 
 Widget getMenuCategoryListWidget(CategoryModel categoryData, bool isAdmin) {
   if (selectedRestaurant.menuStyle == 'Menu Style 3') {
-    return MenuCategoryLisComponentStyleThree(categoryData: categoryData, isAdmin: isAdmin).paddingSymmetric(horizontal: 8);
+    return MenuCategoryLisComponentStyleThree(
+            categoryData: categoryData, isAdmin: isAdmin)
+        .paddingSymmetric(horizontal: 8);
   } else if (selectedRestaurant.menuStyle == 'Menu Style 2') {
-    return MenuCategoryLisComponentStyleTwo(categoryData: categoryData, isAdmin: isAdmin);
+    return MenuCategoryLisComponentStyleTwo(
+        categoryData: categoryData, isAdmin: isAdmin);
   } else {
-    return MenuListCategoryComponent(categoryData: categoryData, isAdmin: isAdmin);
+    return MenuListCategoryComponent(
+        categoryData: categoryData, isAdmin: isAdmin);
   }
 }
 
@@ -83,9 +102,14 @@ class _GetMenuComponentWidgetState extends State<GetMenuComponentWidget> {
           if (menuData.status == false && !widget.isAdmin) {
             return Offstage();
           } else {
-            return MenuComponentStyleTwo(menuModel: menuData).paddingSymmetric(horizontal: 8).onTap(() {
+            return MenuComponentStyleTwo(menuModel: menuData)
+                .paddingSymmetric(horizontal: 8)
+                .onTap(() {
               if (widget.isAdmin) {
-                push(AddMenuItemScreen(menuData: menuData), pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds).then((value) {
+                push(AddMenuItemScreen(menuData: menuData),
+                        pageRouteAnimation: PageRouteAnimation.Scale,
+                        duration: 450.milliseconds)
+                    .then((value) {
                   setState(() {});
                 });
               }
@@ -102,10 +126,14 @@ class _GetMenuComponentWidgetState extends State<GetMenuComponentWidget> {
           } else {
             return MenuComponentStyleThree(
               menuModel: menuData,
-              isLast: i == (widget.data.menu.validate().length - 1) ? true : false,
+              isLast:
+                  i == (widget.data.menu.validate().length - 1) ? true : false,
             ).paddingSymmetric(horizontal: 8).onTap(() {
               if (widget.isAdmin) {
-                push(AddMenuItemScreen(menuData: menuData), pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds).then((value) {
+                push(AddMenuItemScreen(menuData: menuData),
+                        pageRouteAnimation: PageRouteAnimation.Scale,
+                        duration: 450.milliseconds)
+                    .then((value) {
                   setState(() {});
                 });
               }
@@ -125,7 +153,10 @@ class _GetMenuComponentWidgetState extends State<GetMenuComponentWidget> {
                 menuModel: menuData,
               ).onTap(() {
                 if (widget.isAdmin) {
-                  push(AddMenuItemScreen(menuData: menuData), pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds).then((value) {
+                  push(AddMenuItemScreen(menuData: menuData),
+                          pageRouteAnimation: PageRouteAnimation.Scale,
+                          duration: 450.milliseconds)
+                      .then((value) {
                     setState(() {});
                   });
                 }
@@ -141,9 +172,13 @@ class _GetMenuComponentWidgetState extends State<GetMenuComponentWidget> {
             if (menuData.status == false && !widget.isAdmin) {
               return Offstage();
             } else {
-              return MenuComponentStyleOne(menuModel: menuData, isWeb: true).onTap(() {
+              return MenuComponentStyleOne(menuModel: menuData, isWeb: true)
+                  .onTap(() {
                 if (widget.isAdmin) {
-                  push(AddMenuItemScreen(menuData: menuData), pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds).then((value) {
+                  push(AddMenuItemScreen(menuData: menuData),
+                          pageRouteAnimation: PageRouteAnimation.Scale,
+                          duration: 450.milliseconds)
+                      .then((value) {
                     setState(() {});
                   });
                 }
@@ -160,9 +195,13 @@ class _GetMenuComponentWidgetState extends State<GetMenuComponentWidget> {
             if (menuData.status == false && !widget.isAdmin) {
               return Offstage();
             } else {
-              return MenuComponentStyleOne(menuModel: menuData, isTablet: true).onTap(() {
+              return MenuComponentStyleOne(menuModel: menuData, isTablet: true)
+                  .onTap(() {
                 if (widget.isAdmin) {
-                  push(AddMenuItemScreen(menuData: menuData), pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds).then((value) {
+                  push(AddMenuItemScreen(menuData: menuData),
+                          pageRouteAnimation: PageRouteAnimation.Scale,
+                          duration: 450.milliseconds)
+                      .then((value) {
                     setState(() {});
                   });
                 }
@@ -177,12 +216,16 @@ class _GetMenuComponentWidgetState extends State<GetMenuComponentWidget> {
   }
 }
 
-Widget getQrStyleWidget(bool isTesting, GlobalKey<State<StatefulWidget>> qrKey, String saveUrl) {
+Widget getQrStyleWidget(
+    bool isTesting, GlobalKey<State<StatefulWidget>> qrKey, String saveUrl) {
   if (appStore.selectedQrStyle == language.lblQrStyle2) {
-    return QrComponentStyleTwo(isTesting: isTesting, qrKey: qrKey, saveUrl: saveUrl);
+    return QrComponentStyleTwo(
+        isTesting: isTesting, qrKey: qrKey, saveUrl: saveUrl);
   } else if (appStore.selectedQrStyle == language.lblQrStyle3) {
-    return QrComponentStyleThree(isTesting: isTesting, qrKey: qrKey, saveUrl: saveUrl);
+    return QrComponentStyleThree(
+        isTesting: isTesting, qrKey: qrKey, saveUrl: saveUrl);
   } else {
-    return QrComponentStyleOne(isTesting: isTesting, qrKey: qrKey, saveUrl: saveUrl);
+    return QrComponentStyleOne(
+        isTesting: isTesting, qrKey: qrKey, saveUrl: saveUrl);
   }
 }

@@ -76,7 +76,8 @@ abstract class _AppStore with Store {
   @action
   Future<void> setIsTester(bool val, {bool isInitializing = false}) async {
     isTester = val;
-    if (!isInitializing) await setValue(SharePreferencesKey.IS_TESTER, isTester);
+    if (!isInitializing)
+      await setValue(SharePreferencesKey.IS_TESTER, isTester);
   }
 
   @action
@@ -144,8 +145,11 @@ abstract class _AppStore with Store {
 
   @action
   Future<void> setLanguage(String aCode, {BuildContext? context}) async {
-    selectedLanguageDataModel = getSelectedLanguageModel(defaultLanguage: AppConstant.defaultLanguage);
-    selectedLanguage = getSelectedLanguageModel(defaultLanguage: AppConstant.defaultLanguage)!.languageCode!;
+    selectedLanguageDataModel =
+        getSelectedLanguageModel(defaultLanguage: AppConstant.defaultLanguage);
+    selectedLanguage =
+        getSelectedLanguageModel(defaultLanguage: AppConstant.defaultLanguage)!
+            .languageCode!;
 
     if (context != null) language = BaseLanguage.of(context)!;
     language = await AppLocalizations().load(Locale(selectedLanguage));

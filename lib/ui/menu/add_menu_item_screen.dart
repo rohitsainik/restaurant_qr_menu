@@ -95,8 +95,12 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
       isSpecial = widget.menuData!.isSpecial.validate();
       isSweet = widget.menuData!.isSweet.validate();
       isPopular = widget.menuData!.isPopular.validate();
-      isAvailableToday = widget.menuData!.isAvailableToday == null ? true : widget.menuData!.isAvailableToday.validate();
-      status = widget.menuData!.status == null ? true : widget.menuData!.status.validate();
+      isAvailableToday = widget.menuData!.isAvailableToday == null
+          ? true
+          : widget.menuData!.isAvailableToday.validate();
+      status = widget.menuData!.status == null
+          ? true
+          : widget.menuData!.status.validate();
     }
   }
 
@@ -134,8 +138,15 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
   Future<void> saveData() async {
     appStore.setLoading(true);
     if (isUpdate) {
-      await menuService.updateMenuInfo(await getData.then((value) => value.toJson()), widget.menuData!.uid.validate(), selectedRestaurant.uid.validate(), profileImage: image != null ? image : null).then((value) {
-        menuStore.setSelectedCategoryData(appStore.isAll ? null : menuStore.selectedCategoryData);
+      await menuService
+          .updateMenuInfo(
+              await getData.then((value) => value.toJson()),
+              widget.menuData!.uid.validate(),
+              selectedRestaurant.uid.validate(),
+              profileImage: image != null ? image : null)
+          .then((value) {
+        menuStore.setSelectedCategoryData(
+            appStore.isAll ? null : menuStore.selectedCategoryData);
         finish(context, true);
       }).catchError((e) {
         toast(e.toString());
@@ -143,8 +154,13 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
         appStore.setLoading(false);
       });
     } else {
-      await menuService.addMenuInfo(await getData.then((value) => value.toJson()), selectedRestaurant.uid!, profileImage: image != null ? image : null).then((value) {
-        menuStore.setSelectedCategoryData(appStore.isAll ? null : menuStore.selectedCategoryData);
+      await menuService
+          .addMenuInfo(await getData.then((value) => value.toJson()),
+              selectedRestaurant.uid!,
+              profileImage: image != null ? image : null)
+          .then((value) {
+        menuStore.setSelectedCategoryData(
+            appStore.isAll ? null : menuStore.selectedCategoryData);
         finish(context, true);
       }).catchError((e) {
         toast(e.toString());
@@ -156,8 +172,12 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
 
   Future<void> deleteData() async {
     appStore.setLoading(true);
-    menuService.removeCustomDocument(widget.menuData!.uid!, selectedRestaurant.uid.validate()).then((value) {
-      menuStore.setSelectedCategoryData(appStore.isAll ? null : menuStore.selectedCategoryData);
+    menuService
+        .removeCustomDocument(
+            widget.menuData!.uid!, selectedRestaurant.uid.validate())
+        .then((value) {
+      menuStore.setSelectedCategoryData(
+          appStore.isAll ? null : menuStore.selectedCategoryData);
       appStore.setLoading(false);
       finish(context, true);
     }).catchError((e) {
@@ -175,7 +195,9 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
       showConfirmDialogCustom(
         context,
         dialogType: isUpdate ? DialogType.UPDATE : DialogType.ADD,
-        title: isUpdate ? '${language.lblDoYouWantToUpdate} ${widget.menuData!.name}?' : '${language.lblDoYouWantToAddThisMenuItem}?',
+        title: isUpdate
+            ? '${language.lblDoYouWantToUpdate} ${widget.menuData!.name}?'
+            : '${language.lblDoYouWantToAddThisMenuItem}?',
         onAccept: (context) {
           hideKeyboard(context);
           saveData();
@@ -213,7 +235,8 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                       deleteData();
                     },
                     dialogType: DialogType.DELETE,
-                    title: '${language.lblDoYouWantToDelete} ${widget.menuData!.name}?',
+                    title:
+                        '${language.lblDoYouWantToDelete} ${widget.menuData!.name}?',
                   );
                 });
               },
@@ -225,7 +248,8 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
         floatingActionButton: FloatingActionButton.extended(
           label: Text(
             isUpdate ? "${language.lblUpdate}" : "${language.lblAdd}",
-            style: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+            style: boldTextStyle(
+                color: appStore.isDarkMode ? Colors.black : Colors.white),
           ),
           icon: Icon(
             isUpdate ? Icons.update : Icons.add,
@@ -240,7 +264,8 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
         body: Observer(
           builder: (_) => SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(bottom: 80, left: 16, right: 16, top: 16),
+              padding:
+                  EdgeInsets.only(bottom: 80, left: 16, right: 16, top: 16),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -265,10 +290,13 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                           focus: nameFocus,
                           nextFocus: categoryFocus,
                           textInputAction: TextInputAction.next,
-                          decoration: inputDecoration(context, label: "${language.lblName}").copyWith(
+                          decoration: inputDecoration(context,
+                                  label: "${language.lblName}")
+                              .copyWith(
                             prefixIcon: IconButton(
                               onPressed: null,
-                              icon: Icon(Icons.drive_file_rename_outline, color: secondaryIconColor),
+                              icon: Icon(Icons.drive_file_rename_outline,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           controller: nameCont,
@@ -277,7 +305,8 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                         16.height,
                         CategoryDropdownComponent(
                           isValidate: true,
-                          defaultValue: isUpdate ? widget.menuData!.categoryId : null,
+                          defaultValue:
+                              isUpdate ? widget.menuData!.categoryId : null,
                           onValueChanged: (value) async {
                             selectedCategory = value;
                             await 1.seconds.delay;
@@ -296,7 +325,8 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                             prefixIcon: IconButton(
                               icon: Text(
                                 '${selectedRestaurant.currency} ',
-                                style: secondaryTextStyle(size: 24, color: secondaryIconColor),
+                                style: secondaryTextStyle(
+                                    size: 24, color: secondaryIconColor),
                               ),
                               onPressed: () {},
                             ),
@@ -306,25 +336,30 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                         ),
                         16.height,
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           width: context.width(),
                           decoration: commonDecoration(),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(Icons.info_outline, color: secondaryIconColor, size: 20),
+                                      Icon(Icons.info_outline,
+                                          color: secondaryIconColor, size: 20),
                                       8.width,
-                                      Text(language.lblIngredients, style: secondaryTextStyle()),
+                                      Text(language.lblIngredients,
+                                          style: secondaryTextStyle()),
                                     ],
                                   ),
                                   IconButton(
-                                    icon: Icon(Icons.add, color: secondaryIconColor),
+                                    icon: Icon(Icons.add,
+                                        color: secondaryIconColor),
                                     onPressed: () {
                                       showInDialog(
                                         context,
@@ -347,9 +382,12 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                                   ingredient.length,
                                   (index) => Chip(
                                     labelStyle: primaryTextStyle(size: 16),
-                                    label: Text(ingredient[index].capitalizeFirstLetter()),
-                                    deleteIcon: Icon(Icons.clear, color: Colors.red, size: 20),
-                                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    label: Text(ingredient[index]
+                                        .capitalizeFirstLetter()),
+                                    deleteIcon: Icon(Icons.clear,
+                                        color: Colors.red, size: 20),
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
                                     backgroundColor: context.cardColor,
                                     onDeleted: () {
                                       ingredient.removeAt(index);
@@ -363,7 +401,8 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                                       context,
                                       contentPadding: EdgeInsets.all(0),
                                       builder: (c) {
-                                        return AddIngredientDialogComponent(value: ingredient[index]);
+                                        return AddIngredientDialogComponent(
+                                            value: ingredient[index]);
                                       },
                                     );
                                     hideKeyboard(context);
@@ -378,10 +417,13 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                           textStyle: primaryTextStyle(),
                           focus: descFocus,
                           textInputAction: TextInputAction.done,
-                          decoration: inputDecoration(context, label: language.lblDescription).copyWith(
+                          decoration: inputDecoration(context,
+                                  label: language.lblDescription)
+                              .copyWith(
                             prefixIcon: IconButton(
                               onPressed: null,
-                              icon: Icon(Icons.description_outlined, color: secondaryIconColor),
+                              icon: Icon(Icons.description_outlined,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           controller: descCont,
@@ -403,7 +445,9 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                       children: [
                         MenuItemDetailComponent(
                           title: language.lblAvailableToday,
-                          subtitle: isAvailableToday ? language.lblAvailabilityPositive : language.lblAvailabilityNegative,
+                          subtitle: isAvailableToday
+                              ? language.lblAvailabilityPositive
+                              : language.lblAvailabilityNegative,
                           isSelected: isAvailableToday,
                           onChanged: (val) {
                             isAvailableToday = val;
@@ -412,7 +456,9 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                         ),
                         MenuItemDetailComponent(
                           title: language.lblStatus,
-                          subtitle: status ? language.lblStatusPositive : language.lblStatusNegative,
+                          subtitle: status
+                              ? language.lblStatusPositive
+                              : language.lblStatusNegative,
                           isSelected: status,
                           onChanged: (val) {
                             status = val;
@@ -439,12 +485,20 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                         MenuItemDetailComponent(
                           title: language.lblVeg,
                           subtitle: language.lblVegDescription,
-                          isTappedEnabled: selectedRestaurant.isVeg.validate() == true && selectedRestaurant.isNonVeg.validate() == false,
+                          isTappedEnabled:
+                              selectedRestaurant.isVeg.validate() == true &&
+                                  selectedRestaurant.isNonVeg.validate() ==
+                                      false,
                           isSelected: isVeg,
                           onChanged: (bool val) {
-                            if (selectedRestaurant.isVeg.validate() == true && selectedRestaurant.isNonVeg.validate() == true) {
+                            if (selectedRestaurant.isVeg.validate() == true &&
+                                selectedRestaurant.isNonVeg.validate() ==
+                                    true) {
                               isVeg = val;
-                            } else if (selectedRestaurant.isVeg.validate() == true && selectedRestaurant.isNonVeg.validate() == false) {
+                            } else if (selectedRestaurant.isVeg.validate() ==
+                                    true &&
+                                selectedRestaurant.isNonVeg.validate() ==
+                                    false) {
                               isVeg = true;
                               toast('You can\'t This is veg restaurant');
                             } else {

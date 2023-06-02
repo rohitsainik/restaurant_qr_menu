@@ -15,20 +15,23 @@ final googleSignIn = GoogleSignIn();
 
 class AuthService {
   Future signInWithGoogle() async {
-    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn().catchError((e) {});
+    final GoogleSignInAccount? googleSignInAccount =
+        await googleSignIn.signIn().catchError((e) {});
 
     if (googleSignInAccount != null) {
       setValue(SharePreferencesKey.IS_LOGGED_IN, true);
 
       //Authentication
-      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
 
-      final UserCredential authResult = await _auth.signInWithCredential(credential);
+      final UserCredential authResult =
+          await _auth.signInWithCredential(credential);
       final User user = authResult.user!;
 
       assert(!user.isAnonymous);
@@ -44,7 +47,8 @@ class AuthService {
     }
   }
 
-  Future<void> loginFromFirebaseUser(User currentUser, {String? fullName}) async {
+  Future<void> loginFromFirebaseUser(User currentUser,
+      {String? fullName}) async {
     UserModel userModel = UserModel();
 
     if (await userService.isUserExist(currentUser.email)) {
@@ -76,7 +80,10 @@ class AuthService {
 
       // log(userModel.toJson());
 
-      await userService.addDocumentWithCustomId(currentUser.uid, userModel).then((value) {}).catchError((e) {
+      await userService
+          .addDocumentWithCustomId(currentUser.uid, userModel)
+          .then((value) {})
+          .catchError((e) {
         throw e;
       });
     }
@@ -108,8 +115,13 @@ class AuthService {
     setValue(SharePreferencesKey.IS_EMAIL_LOGIN, user.isEmailLogin.validate());
   }
 
-  Future<void> signUpWithEmailPassword({String? name, required String email, required String password, String? mobileNumber}) async {
-    UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+  Future<void> signUpWithEmailPassword(
+      {String? name,
+      required String email,
+      required String password,
+      String? mobileNumber}) async {
+    UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
     if (userCredential != null && userCredential.user != null) {
       User currentUser = userCredential.user!;
       UserModel userModel = UserModel();
@@ -124,9 +136,12 @@ class AuthService {
       userModel.createdAt = Timestamp.now();
       userModel.updatedAt = Timestamp.now();
 
-      await userService.addDocumentWithCustomId(currentUser.uid, userModel).then((value) async {
+      await userService
+          .addDocumentWithCustomId(currentUser.uid, userModel)
+          .then((value) async {
         //
-        await signInWithEmailPassword(email: email, password: password).then((value) {
+        await signInWithEmailPassword(email: email, password: password)
+            .then((value) {
           //
         });
       }).catchError((e) {
@@ -138,8 +153,11 @@ class AuthService {
     }
   }
 
-  Future<void> signInWithEmailPassword({required String email, required String password}) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) async {
+  Future<void> signInWithEmailPassword(
+      {required String email, required String password}) async {
+    await _auth
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((value) async {
       final User user = value.user!;
       setValue(SharePreferencesKey.PASSWORD, password);
       UserModel userModel = await userService.getUser(email: user.email);
@@ -154,7 +172,9 @@ class AuthService {
   }
 
   Future<void> changePassword(String newPassword) async {
-    await FirebaseAuth.instance.currentUser!.updatePassword(newPassword).then((value) async {
+    await FirebaseAuth.instance.currentUser!
+        .updatePassword(newPassword)
+        .then((value) async {
       await setValue(SharePreferencesKey.PASSWORD, newPassword);
     });
   }
@@ -172,7 +192,10 @@ class AuthService {
 
     appStore.setLoggedIn(false);
 
-    SignInScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Scale, isNewTask: true, duration: 450.milliseconds);
+    SignInScreen().launch(context,
+        pageRouteAnimation: PageRouteAnimation.Scale,
+        isNewTask: true,
+        duration: 450.milliseconds);
   }
 
   Future<void> forgotPassword({required String email}) async {
@@ -195,7 +218,8 @@ class AuthService {
           final oAuthProvider = OAuthProvider('apple.com');
           final credential = oAuthProvider.credential(
             idToken: String.fromCharCodes(appleIdCredential.identityToken!),
-            accessToken: String.fromCharCodes(appleIdCredential.authorizationCode!),
+            accessToken:
+                String.fromCharCodes(appleIdCredential.authorizationCode!),
           );
           final authResult = await _auth.signInWithCredential(credential);
           final user = authResult.user!;
@@ -206,7 +230,8 @@ class AuthService {
 
           await loginFromFirebaseUser(
             user,
-            fullName: '${getStringAsync('appleGivenName')} ${getStringAsync('appleFamilyName')}',
+            fullName:
+                '${getStringAsync('appleGivenName')} ${getStringAsync('appleFamilyName')}',
           );
           break;
         case AuthorizationStatus.error:

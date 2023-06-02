@@ -10,7 +10,8 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     primarySwatch: createMaterialColor(primaryColor),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: primaryColor),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: primaryColor),
     useMaterial3: true,
     colorScheme: ColorScheme(
       primary: primaryColor,
@@ -29,7 +30,8 @@ class AppTheme {
     ),
     scaffoldBackgroundColor: Colors.white,
     fontFamily: GoogleFonts.poppins().fontFamily,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Colors.white),
+    bottomNavigationBarTheme:
+        BottomNavigationBarThemeData(backgroundColor: Colors.white),
     iconTheme: IconThemeData(color: scaffoldSecondaryDark),
     textTheme: TextTheme(headline6: TextStyle()),
     dialogBackgroundColor: Colors.white,
@@ -82,7 +84,8 @@ class AppTheme {
     primaryColor: primaryColor,
     scaffoldBackgroundColor: scaffoldColorDark,
     fontFamily: GoogleFonts.poppins().fontFamily,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: scaffoldSecondaryDark),
+    bottomNavigationBarTheme:
+        BottomNavigationBarThemeData(backgroundColor: scaffoldSecondaryDark),
     iconTheme: IconThemeData(color: Colors.white),
     textTheme: TextTheme(headline6: TextStyle(color: textSecondaryColor)),
     dialogBackgroundColor: scaffoldSecondaryDark,

@@ -8,8 +8,13 @@ import 'base_service.dart';
 
 class MenuService extends BaseService<MenuModel> {
   MenuService({String? restaurantId}) {
-    ref = fireStore.collection(Collections.restaurants).doc(restaurantId).collection(Collections.menus).withConverter<MenuModel>(
-          fromFirestore: (snapshot, options) => MenuModel.fromJson(snapshot.data()!),
+    ref = fireStore
+        .collection(Collections.restaurants)
+        .doc(restaurantId)
+        .collection(Collections.menus)
+        .withConverter<MenuModel>(
+          fromFirestore: (snapshot, options) =>
+              MenuModel.fromJson(snapshot.data()!),
           toFirestore: (value, options) => value.toJson(),
         );
   }
@@ -29,9 +34,14 @@ class MenuService extends BaseService<MenuModel> {
 
   Stream<List<MenuModel>> getAllDataCategoryWise({String? categoryId}) {
     if (categoryId == null) {
-      return ref!.snapshots().map((em) => em.docs.map((e) => e.data()).toList());
+      return ref!
+          .snapshots()
+          .map((em) => em.docs.map((e) => e.data()).toList());
     } else {
-      return ref!.where(Menus.categoryId, isEqualTo: categoryId).snapshots().map((em) => em.docs.map((e) => e.data()).toList());
+      return ref!
+          .where(Menus.categoryId, isEqualTo: categoryId)
+          .snapshots()
+          .map((em) => em.docs.map((e) => e.data()).toList());
     }
   }
 
@@ -39,16 +49,25 @@ class MenuService extends BaseService<MenuModel> {
     if (categoryId == null) {
       return ref!.get().then((em) => em.docs.map((e) => e.data()).toList());
     } else {
-      return ref!.where(Menus.categoryId, isEqualTo: categoryId).get().then((em) => em.docs.map((e) => e.data()).toList());
+      return ref!
+          .where(Menus.categoryId, isEqualTo: categoryId)
+          .get()
+          .then((em) => em.docs.map((e) => e.data()).toList());
     }
   }
 
   Future<int> checkChildItemExist(String id, String restaurantId) async {
-    return await ref!.where(Menus.categoryId, isEqualTo: id).get().then((value) => value.docs.length);
+    return await ref!
+        .where(Menus.categoryId, isEqualTo: id)
+        .get()
+        .then((value) => value.docs.length);
   }
 
   Future checkToDelete(String id, String restaurantId) async {
-    return await ref!.where(Menus.categoryId, isEqualTo: id).get().then((value) {
+    return await ref!
+        .where(Menus.categoryId, isEqualTo: id)
+        .get()
+        .then((value) {
       var batch = fireStore.batch();
       value.docs.forEach((element) {
         batch.delete(element.reference);
@@ -74,20 +93,29 @@ class MenuService extends BaseService<MenuModel> {
         .map((event) => event.docs.length);
   }
 
-  Future<String> addMenuInfo(Map<String, dynamic> data, String restId, {XFile? profileImage}) async {
+  Future<String> addMenuInfo(Map<String, dynamic> data, String restId,
+      {XFile? profileImage}) async {
     var doc = await ref!.add(MenuModel.fromJson(data));
     ref!.doc(doc.id).update({CommonKeys.id: doc.id});
 
     if (profileImage != null) {
-      ref!.doc(doc.id).update({Menus.image: await BaseService.getUploadedImageURL(profileImage, "$restId/${doc.id}")});
+      ref!.doc(doc.id).update({
+        Menus.image: await BaseService.getUploadedImageURL(
+            profileImage, "$restId/${doc.id}")
+      });
     }
     return doc.id;
   }
 
-  Future<void> updateMenuInfo(Map<String, dynamic> data, String id, String restId, {XFile? profileImage}) async {
+  Future<void> updateMenuInfo(
+      Map<String, dynamic> data, String id, String restId,
+      {XFile? profileImage}) async {
     await ref!.doc(id).update(data);
     if (profileImage != null) {
-      ref!.doc(id).update({Menus.image: await BaseService.getUploadedImageURL(profileImage, '$restId/$id')});
+      ref!.doc(id).update({
+        Menus.image:
+            await BaseService.getUploadedImageURL(profileImage, '$restId/$id')
+      });
     }
     return;
   }

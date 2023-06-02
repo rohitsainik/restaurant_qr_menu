@@ -46,7 +46,7 @@ void main() async {
 
   setPathUrlStrategy();
   await Firebase.initializeApp(
-      name:"restroqr",
+      name: "restroqr",
       options: FirebaseOptions(
           apiKey: "AIzaSyCBYiHUOeQ5hAtUT2ioU_6kj4X1k1CL7rQ",
           appId: "1:643238916979:web:dbfa75568d111540830b06",

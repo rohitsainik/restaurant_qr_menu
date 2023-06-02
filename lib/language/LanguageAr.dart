@@ -32,7 +32,8 @@ class LanguageAr extends BaseLanguage {
   String get lblCategories => "فئات";
 
   @override
-  String get lblLongPressOnCategoryForMoreOptions => "اضغط لفترة طويلة على فئة لمزيد من الخيارات.";
+  String get lblLongPressOnCategoryForMoreOptions =>
+      "اضغط لفترة طويلة على فئة لمزيد من الخيارات.";
 
   @override
   String get lblA => "أ";
@@ -56,7 +57,8 @@ class LanguageAr extends BaseLanguage {
   String get lblForgetPassword => "نسيت كلمة المرور؟";
 
   @override
-  String get lblEnterYouEmail => "سيتم إرسال رابط إعادة تعيين كلمة المرور إلى عنوان البريد الإلكتروني الذي تم إدخاله أعلاه";
+  String get lblEnterYouEmail =>
+      "سيتم إرسال رابط إعادة تعيين كلمة المرور إلى عنوان البريد الإلكتروني الذي تم إدخاله أعلاه";
 
   @override
   String get lblEmail => "بريد الالكتروني";
@@ -68,7 +70,8 @@ class LanguageAr extends BaseLanguage {
   String get lblResetPassword => "إعادة تعيين كلمة المرور";
 
   @override
-  String get lblResetPasswordLinkHasSentYourMail => "إعادة تعيين رابط كلمة المرور قد أرسل بريدك";
+  String get lblResetPasswordLinkHasSentYourMail =>
+      "إعادة تعيين رابط كلمة المرور قد أرسل بريدك";
 
   @override
   String get lblEnable => "ممكن";
@@ -77,7 +80,8 @@ class LanguageAr extends BaseLanguage {
   String get lblDisable => "إبطال";
 
   @override
-  String get lblTextForDeletingCategory => "إذا قمت بحذف هذه الفئة، فسيتم إزالة جميع قوائمها. هل ما زلت تريد حذف هذه الفئة؟";
+  String get lblTextForDeletingCategory =>
+      "إذا قمت بحذف هذه الفئة، فسيتم إزالة جميع قوائمها. هل ما زلت تريد حذف هذه الفئة؟";
 
   @override
   String get lblWrongSelection => "اختيار خاطئ";
@@ -174,7 +178,8 @@ class LanguageAr extends BaseLanguage {
   String get lblDoYouWantToDelete => "هل تريد أن تحذف";
 
   @override
-  String get lblDoYouWantToAddThisMenuItem => "هل ترغب في إضافة عنصر القائمة هذا";
+  String get lblDoYouWantToAddThisMenuItem =>
+      "هل ترغب في إضافة عنصر القائمة هذا";
 
   @override
   String get lblPleaseChooseCategory => "الرجاء اختيار الفئة";
@@ -189,31 +194,38 @@ class LanguageAr extends BaseLanguage {
   String get lblIngredients => "مكونات";
 
   @override
-  String get lblNewDescription => "استكشاف الاختيار الحصري للأطباق الجديدة والأطباق المطبوخة إلى بلاغ براعم ذوقك";
+  String get lblNewDescription =>
+      "استكشاف الاختيار الحصري للأطباق الجديدة والأطباق المطبوخة إلى بلاغ براعم ذوقك";
 
   @override
   String get lblVeg => "فيج";
 
   @override
-  String get lblVegDescription => "اختر من المجموعة الغريبة من الخضروات، مما أثار وقذف مقطوعة ومطبوخة مع الكمال";
+  String get lblVegDescription =>
+      "اختر من المجموعة الغريبة من الخضروات، مما أثار وقذف مقطوعة ومطبوخة مع الكمال";
 
   @override
-  String get lblSpicyDescription => "الساخنة والأزيز، إذا كنت من محبي المطبخ الحار، تحقق من مجموعة سبايسة خاصة من الأطباق.";
+  String get lblSpicyDescription =>
+      "الساخنة والأزيز، إذا كنت من محبي المطبخ الحار، تحقق من مجموعة سبايسة خاصة من الأطباق.";
 
   @override
-  String get lblJainDescription => "تقديم الطعام لتفضيلات الطعام الخاصة بك هو هدفنا، استكشاف قائمة طعام مخصصة JAIN للعثور على واحدة مثالية";
+  String get lblJainDescription =>
+      "تقديم الطعام لتفضيلات الطعام الخاصة بك هو هدفنا، استكشاف قائمة طعام مخصصة JAIN للعثور على واحدة مثالية";
 
   @override
-  String get lblSpecialDescription => "إذا لم تكن قد جربت مجموعتنا الرائعة من المأكولات، فلا تفوت في قائمتنا الخاصة تقدم كل شيء من أجلك.";
+  String get lblSpecialDescription =>
+      "إذا لم تكن قد جربت مجموعتنا الرائعة من المأكولات، فلا تفوت في قائمتنا الخاصة تقدم كل شيء من أجلك.";
 
   @override
   String get lblSweet => "حلو";
 
   @override
-  String get lblSweetDescription => "وجبة بدون حلوى غير مكتملة، قم بتغذية حواسك بأحمل مجموعة الحلوى";
+  String get lblSweetDescription =>
+      "وجبة بدون حلوى غير مكتملة، قم بتغذية حواسك بأحمل مجموعة الحلوى";
 
   @override
-  String get lblPopularDescription => "لست متأكدا ما للنظام؟ تحقق من الموصى بها للغاية أو الأكثر مبيعا والأكثر شعبية والمطابخ والأشكال الشهية";
+  String get lblPopularDescription =>
+      "لست متأكدا ما للنظام؟ تحقق من الموصى بها للغاية أو الأكثر مبيعا والأكثر شعبية والمطابخ والأشكال الشهية";
 
   @override
   String get lblAddLogoImage => "إضافة صورة الشعار";
@@ -267,13 +279,15 @@ class LanguageAr extends BaseLanguage {
   String get lblConfirmPassword => "تأكيد كلمة المرور";
 
   @override
-  String get lblPasswordLengthShouldBeMoreThanSix => "يجب أن يكون طول كلمة المرور أكثر من ستة";
+  String get lblPasswordLengthShouldBeMoreThanSix =>
+      "يجب أن يكون طول كلمة المرور أكثر من ستة";
 
   @override
   String get lblBothPasswordShouldBeMatched => "يجب مطابقة كل من كلمة المرور";
 
   @override
-  String get lblOldPasswordShouldNotBeSameAsNewPassword => "يجب ألا تكون كلمة المرور القديمة هي نفس كلمة المرور الجديدة";
+  String get lblOldPasswordShouldNotBeSameAsNewPassword =>
+      "يجب ألا تكون كلمة المرور القديمة هي نفس كلمة المرور الجديدة";
 
   @override
   String get lblSave => "يحفظ";
@@ -330,7 +344,8 @@ class LanguageAr extends BaseLanguage {
   String get lblChangePassword => "";
 
   @override
-  String get lblUserLoginWithSocialAccountCannotChangeThePassword => "تسجيل دخول المستخدم مع الحساب الاجتماعي لا يمكن تغيير كلمة المرور";
+  String get lblUserLoginWithSocialAccountCannotChangeThePassword =>
+      "تسجيل دخول المستخدم مع الحساب الاجتماعي لا يمكن تغيير كلمة المرور";
 
   @override
   String get lblDarkMode => "الوضع المظلم";
@@ -351,7 +366,8 @@ class LanguageAr extends BaseLanguage {
   String get lblLogout => "تسجيل خروج";
 
   @override
-  String get lblAreYouSureYouWantToLogout => "هل أنت متأكد أنك تريد تسجيل الخروج";
+  String get lblAreYouSureYouWantToLogout =>
+      "هل أنت متأكد أنك تريد تسجيل الخروج";
 
   @override
   String get lblVisitAgain => "زورني مره اخرى";
@@ -418,7 +434,8 @@ class LanguageAr extends BaseLanguage {
   String get lblWaitToScan => "انتظر لمسح الضوئي";
 
   @override
-  String get lblUserAlreadyRegisterWithEmail => "المستخدم بالفعل التسجيل مع البريد الإلكتروني";
+  String get lblUserAlreadyRegisterWithEmail =>
+      "المستخدم بالفعل التسجيل مع البريد الإلكتروني";
 
   @override
   String get lblWrongURL => "رابط خطأ";
@@ -489,7 +506,8 @@ class LanguageAr extends BaseLanguage {
   String get lblStatus => "حالة";
 
   @override
-  String get lblStatusPositive => "لن يكون هذا العنصر مرئيًا في قائمة المستخدمين";
+  String get lblStatusPositive =>
+      "لن يكون هذا العنصر مرئيًا في قائمة المستخدمين";
 
   @override
   String get lblStatusNegative => "يمكن لجميع المستخدمين رؤية عنصر القائمة هذا";

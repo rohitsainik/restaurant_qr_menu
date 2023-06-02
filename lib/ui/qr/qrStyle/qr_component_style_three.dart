@@ -11,7 +11,8 @@ class QrComponentStyleThree extends StatelessWidget {
   final String saveUrl;
   final bool isTesting;
 
-  QrComponentStyleThree({required this.isTesting, required this.qrKey, required this.saveUrl});
+  QrComponentStyleThree(
+      {required this.isTesting, required this.qrKey, required this.saveUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,11 @@ class QrComponentStyleThree extends StatelessWidget {
               key: qrKey,
               child: QrImageView(
                 padding: EdgeInsets.all(16),
-                dataModuleStyle: QrDataModuleStyle(dataModuleShape: QrDataModuleShape.circle),
-                backgroundColor: appStore.isDarkMode ? Colors.white : primaryColor.withAlpha(20),
+                dataModuleStyle: QrDataModuleStyle(
+                    dataModuleShape: QrDataModuleShape.circle),
+                backgroundColor: appStore.isDarkMode
+                    ? Colors.white
+                    : primaryColor.withAlpha(20),
                 version: 4,
                 data: isTesting ? selectedRestaurant.uid.validate() : saveUrl,
                 size: 220,
@@ -70,7 +74,9 @@ class QrComponentStyleThree extends StatelessWidget {
               Text(
                 "${selectedRestaurant.name.validate()}",
                 textAlign: TextAlign.center,
-                style: boldTextStyle(size: 30, fontFamily: GoogleFonts.gloriaHallelujah().fontFamily),
+                style: boldTextStyle(
+                    size: 30,
+                    fontFamily: GoogleFonts.gloriaHallelujah().fontFamily),
               ),
             ],
           ),

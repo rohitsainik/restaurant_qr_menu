@@ -39,7 +39,8 @@ class _QRScannerState extends State<QRScanner> {
                 if (data.validate().isNotEmpty) {
                   if (data.validateURL()) {
                     if (data.contains(mBaseURL)) {
-                      UserSplashScreen(result: data.split('/')[3]).launch(context);
+                      UserSplashScreen(result: data.split('/')[3])
+                          .launch(context);
                     } else {
                       finish(context);
                       launchUrl(Uri.parse(data), mode: LaunchMode.inAppWebView);

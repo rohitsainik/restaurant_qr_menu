@@ -1,6 +1,6 @@
 import 'package:qr_menu/main.dart';
 
-class QrStyleModel{
+class QrStyleModel {
   String? styleName;
 
   QrStyleModel({this.styleName});

@@ -1,4 +1,3 @@
-
 import 'package:image_picker/image_picker.dart';
 import 'package:qr_menu/main.dart';
 import 'package:qr_menu/models/category_model.dart';
@@ -8,21 +7,28 @@ import 'base_service.dart';
 
 class CategoryService extends BaseService<CategoryModel> {
   CategoryService({String? restaurantId}) {
-    ref = fireStore.collection(Collections.restaurants).doc(restaurantId).collection(Collections.categories).withConverter<CategoryModel>(
-          fromFirestore: (snapshot, options) => CategoryModel.fromJson(snapshot.data()!),
+    ref = fireStore
+        .collection(Collections.restaurants)
+        .doc(restaurantId)
+        .collection(Collections.categories)
+        .withConverter<CategoryModel>(
+          fromFirestore: (snapshot, options) =>
+              CategoryModel.fromJson(snapshot.data()!),
           toFirestore: (value, options) => value.toJson(),
         );
   }
 
   Future<void> removeCustomDocument(String id, String restaurantId) async {
     await ref!.doc(id).delete();
-    if(storage.ref().child('$restaurantId/category/$id').toString().isEmpty){
+    if (storage.ref().child('$restaurantId/category/$id').toString().isEmpty) {
       storage.ref().child('$restaurantId/category/$id').delete();
     }
   }
 
   Stream<List<CategoryModel>> getCategoryStreamData() {
-    return ref!.snapshots().map((event) => event.docs.map((e) => e.data()).toList());
+    return ref!
+        .snapshots()
+        .map((event) => event.docs.map((e) => e.data()).toList());
   }
 
   Future<List<CategoryModel>> getCategoryFutureData() {
@@ -30,23 +36,37 @@ class CategoryService extends BaseService<CategoryModel> {
   }
 
   static Stream<int> getTotalCategories({String? restaurantId}) {
-    return fireStore.collection(Collections.restaurants).doc(restaurantId).collection(Collections.categories).snapshots().map((value) => value.docs.length);
+    return fireStore
+        .collection(Collections.restaurants)
+        .doc(restaurantId)
+        .collection(Collections.categories)
+        .snapshots()
+        .map((value) => value.docs.length);
   }
 
-  Future<String> addCategoryInfo(Map<String, dynamic> data, String restId, {XFile? profileImage}) async {
+  Future<String> addCategoryInfo(Map<String, dynamic> data, String restId,
+      {XFile? profileImage}) async {
     var doc = await ref!.add(CategoryModel.fromJson(data));
     ref!.doc(doc.id).update({CommonKeys.id: doc.id});
 
     if (profileImage != null) {
-        ref!.doc(doc.id).update({Categories.image: await BaseService.getUploadedImageURL(profileImage, "$restId/${doc.id}")});
+      ref!.doc(doc.id).update({
+        Categories.image: await BaseService.getUploadedImageURL(
+            profileImage, "$restId/${doc.id}")
+      });
     }
     return doc.id;
   }
 
-  Future<void> updateCategoryInfo(Map<String, dynamic> data, String id, String restId, {XFile? profileImage}) async {
+  Future<void> updateCategoryInfo(
+      Map<String, dynamic> data, String id, String restId,
+      {XFile? profileImage}) async {
     await ref!.doc(id).update(data);
     if (profileImage != null) {
-      ref!.doc(id).update({Categories.image: await BaseService.getUploadedImageURL(profileImage, '$restId/$id')});
+      ref!.doc(id).update({
+        Categories.image:
+            await BaseService.getUploadedImageURL(profileImage, '$restId/$id')
+      });
     }
     return;
   }
@@ -58,6 +78,9 @@ class CategoryService extends BaseService<CategoryModel> {
   }
 
   Stream<CategoryModel> getSingleStreamData({String? uId}) {
-    return ref!.where(CommonKeys.id, isEqualTo: uId).snapshots().map((value) => value.docs.first.data());
+    return ref!
+        .where(CommonKeys.id, isEqualTo: uId)
+        .snapshots()
+        .map((value) => value.docs.first.data());
   }
 }

@@ -34,7 +34,10 @@ class SignInScreenState extends State<SignInScreen> {
       _formKey.currentState!.save();
       hideKeyboard(context);
       appStore.setLoading(true);
-      authService.signInWithEmailPassword(email: emailCont.text, password: passCont.text).then((value) {
+      authService
+          .signInWithEmailPassword(
+              email: emailCont.text, password: passCont.text)
+          .then((value) {
         DashBoardScreen().launch(context, isNewTask: true);
       }).catchError((e) {
         toast(e.toString());
@@ -97,8 +100,11 @@ class SignInScreenState extends State<SignInScreen> {
                               textStyle: primaryTextStyle(),
                               controller: emailCont,
                               textFieldType: TextFieldType.EMAIL,
-                              decoration: inputDecoration(context, label: language.lblEmail).copyWith(
-                                prefixIcon: Icon(Icons.email_outlined, color: secondaryIconColor),
+                              decoration: inputDecoration(context,
+                                      label: language.lblEmail)
+                                  .copyWith(
+                                prefixIcon: Icon(Icons.email_outlined,
+                                    color: secondaryIconColor),
                               ),
                             ),
                             16.height,
@@ -106,8 +112,11 @@ class SignInScreenState extends State<SignInScreen> {
                               textStyle: primaryTextStyle(),
                               controller: passCont,
                               textFieldType: TextFieldType.PASSWORD,
-                              decoration: inputDecoration(context, label: language.lblPassword).copyWith(
-                                prefixIcon: Icon(Icons.password_rounded, color: secondaryIconColor),
+                              decoration: inputDecoration(context,
+                                      label: language.lblPassword)
+                                  .copyWith(
+                                prefixIcon: Icon(Icons.password_rounded,
+                                    color: secondaryIconColor),
                               ),
                               textInputAction: TextInputAction.done,
                               onFieldSubmitted: (s) {
@@ -122,16 +131,23 @@ class SignInScreenState extends State<SignInScreen> {
                         alignment: Alignment.bottomRight,
                         child: TextButton(
                           onPressed: () {
-                            showInDialog(context, dialogAnimation: DialogAnimation.SLIDE_TOP_BOTTOM, builder: (_) => ForgotPasswordDialog());
+                            showInDialog(context,
+                                dialogAnimation:
+                                    DialogAnimation.SLIDE_TOP_BOTTOM,
+                                builder: (_) => ForgotPasswordDialog());
                           },
-                          child: Text('${language.lblForgotPassword}?', style: primaryTextStyle(size: 14)),
+                          child: Text('${language.lblForgotPassword}?',
+                              style: primaryTextStyle(size: 14)),
                         ),
                       ),
                       AppButton(
                         text: language.lblSignIn,
                         textColor: white,
                         width: context.width(),
-                        textStyle: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+                        textStyle: boldTextStyle(
+                            color: appStore.isDarkMode
+                                ? Colors.black
+                                : Colors.white),
                         onTap: () {
                           login();
                         },
@@ -144,11 +160,15 @@ class SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("${language.lblDontHaveAnAccount}?", style: secondaryTextStyle(size: 14)).flexible(),
+                    Text("${language.lblDontHaveAnAccount}?",
+                            style: secondaryTextStyle(size: 14))
+                        .flexible(),
                     TextButton(
-                      child: Text(language.lblCreateAccountHere, style: boldTextStyle(size: 14)),
+                      child: Text(language.lblCreateAccountHere,
+                          style: boldTextStyle(size: 14)),
                       onPressed: () {
-                        push(SignUpScreen(isFromLogin: false), pageRouteAnimation: PageRouteAnimation.Slide);
+                        push(SignUpScreen(isFromLogin: false),
+                            pageRouteAnimation: PageRouteAnimation.Slide);
                       },
                     ),
                   ],
@@ -177,10 +197,13 @@ class SignInScreenState extends State<SignInScreen> {
 
                           await authService.signInWithGoogle().then(
                             (user) {
-                              if (getStringAsync(SharePreferencesKey.USER_NUMBER).isEmpty) {
+                              if (getStringAsync(
+                                      SharePreferencesKey.USER_NUMBER)
+                                  .isEmpty) {
                                 push(SignUpScreen(isFromLogin: true));
                               } else {
-                                DashBoardScreen().launch(context, isNewTask: true);
+                                DashBoardScreen()
+                                    .launch(context, isNewTask: true);
                               }
                             },
                           ).catchError(
@@ -195,7 +218,10 @@ class SignInScreenState extends State<SignInScreen> {
                     AppButton(
                       width: context.width() * 0.4,
                       color: context.cardColor,
-                      child: Icon(Icons.play_arrow_sharp, color: appStore.isDarkMode ? Colors.white : Colors.black),
+                      child: Icon(Icons.play_arrow_sharp,
+                          color: appStore.isDarkMode
+                              ? Colors.white
+                              : Colors.black),
                       onTap: () async {
                         await authService.appleLogIn().then((value) {
                           DashBoardScreen().launch(context, isNewTask: true);

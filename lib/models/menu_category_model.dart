@@ -1,9 +1,8 @@
 import 'package:qr_menu/models/menu_model.dart';
 
-class MenuCategoryModel{
-
+class MenuCategoryModel {
   String? categoryId;
   List<MenuModel>? menu;
 
-  MenuCategoryModel({this.categoryId,this.menu});
+  MenuCategoryModel({this.categoryId, this.menu});
 }

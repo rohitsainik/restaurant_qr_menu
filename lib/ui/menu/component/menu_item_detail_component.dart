@@ -11,10 +11,16 @@ class MenuItemDetailComponent extends StatefulWidget {
   final bool? isTappedEnabled;
   final Function(bool val) onChanged;
 
-  MenuItemDetailComponent({required this.title, required this.subtitle, required this.isSelected, required this.onChanged, this.isTappedEnabled});
+  MenuItemDetailComponent(
+      {required this.title,
+      required this.subtitle,
+      required this.isSelected,
+      required this.onChanged,
+      this.isTappedEnabled});
 
   @override
-  _MenuItemDetailComponentState createState() => _MenuItemDetailComponentState();
+  _MenuItemDetailComponentState createState() =>
+      _MenuItemDetailComponentState();
 }
 
 class _MenuItemDetailComponentState extends State<MenuItemDetailComponent> {
@@ -43,7 +49,9 @@ class _MenuItemDetailComponentState extends State<MenuItemDetailComponent> {
           Row(
             children: [
               Text(
-                !isSelected ? '${language.lblEnable}' : '${language.lblDisable}',
+                !isSelected
+                    ? '${language.lblEnable}'
+                    : '${language.lblDisable}',
                 style: primaryTextStyle(),
               ).expand(),
               Tooltip(
@@ -51,7 +59,8 @@ class _MenuItemDetailComponentState extends State<MenuItemDetailComponent> {
                 margin: EdgeInsets.symmetric(horizontal: 36),
                 message: '${widget.subtitle}',
                 triggerMode: TooltipTriggerMode.tap,
-                child: Icon(Icons.info_outline, color: context.iconColor, size: 16),
+                child: Icon(Icons.info_outline,
+                    color: context.iconColor, size: 16),
               )
             ],
           ),

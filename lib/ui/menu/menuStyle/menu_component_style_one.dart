@@ -27,7 +27,9 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
   }
 
   void init() {
-    if (Timestamp.now().toDate().day - selectedRestaurant.newItemForDays.validate() <= 0) {
+    if (Timestamp.now().toDate().day -
+            selectedRestaurant.newItemForDays.validate() <=
+        0) {
       if (widget.menuModel!.isNew.validate()) {
         widget.menuModel!.isNew = true;
       } else {
@@ -102,8 +104,12 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
           Row(
             children: [
               widget.menuModel!.isVeg.validate()
-                  ? VegComponent(size: 18, isAvailableToday: widget.menuModel!.isAvailableToday)
-                  : NonVegComponent(size: 18, isAvailableToday: widget.menuModel!.isAvailableToday),
+                  ? VegComponent(
+                      size: 18,
+                      isAvailableToday: widget.menuModel!.isAvailableToday)
+                  : NonVegComponent(
+                      size: 18,
+                      isAvailableToday: widget.menuModel!.isAvailableToday),
               8.width,
               Stack(
                 children: [
@@ -122,7 +128,8 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                               '${widget.menuModel!.name!.validate()[0].toUpperCase()}',
                               style: boldTextStyle(size: 14),
                             ).center()
-                          : cachedImage(widget.menuModel!.image, fit: BoxFit.cover),
+                          : cachedImage(widget.menuModel!.image,
+                              fit: BoxFit.cover),
                     ),
                   ),
                   if (widget.menuModel!.isAvailableToday == false)
@@ -143,7 +150,9 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                   Text(
                     '${widget.menuModel!.name!.trim()}',
                     style: boldTextStyle(
-                      color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                      color: widget.menuModel!.isAvailableToday == false
+                          ? Colors.grey
+                          : context.iconColor,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -152,14 +161,18 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                   if (widget.menuModel!.status == false)
                     Icon(
                       Icons.circle,
-                      color: widget.menuModel!.isAvailableToday == false ? Colors.grey : Colors.red,
+                      color: widget.menuModel!.isAvailableToday == false
+                          ? Colors.grey
+                          : Colors.red,
                       size: 12,
                     )
                 ],
               ).expand(),
-              widget.menuModel!.isNew.validate() && widget.menuModel!.isAvailableToday != false
+              widget.menuModel!.isNew.validate() &&
+                      widget.menuModel!.isAvailableToday != false
                   ? Container(
-                      child: Text(language.lblNew, style: primaryTextStyle(size: 14, color: Colors.red)),
+                      child: Text(language.lblNew,
+                          style: primaryTextStyle(size: 14, color: Colors.red)),
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: radius(defaultRadius),
@@ -167,9 +180,12 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                       ),
                     )
                   : Container(
-                      child: Text('', style: primaryTextStyle(size: 14, color: Colors.red)),
+                      child: Text('',
+                          style: primaryTextStyle(size: 14, color: Colors.red)),
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(borderRadius: radius(defaultRadius), color: Colors.transparent),
+                      decoration: BoxDecoration(
+                          borderRadius: radius(defaultRadius),
+                          color: Colors.transparent),
                     ),
             ],
           ),
@@ -185,7 +201,9 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                           '${widget.menuModel!.ingredient?[index].capitalizeFirstLetter()}',
                           style: primaryTextStyle(
                             size: 14,
-                            color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                            color: widget.menuModel!.isAvailableToday == false
+                                ? Colors.grey
+                                : context.iconColor,
                           ),
                           trimLines: 2,
                           trimMode: TrimMode.Line,
@@ -197,7 +215,9 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                         '${widget.menuModel!.ingredient?[index].capitalizeFirstLetter()},',
                         style: primaryTextStyle(
                           size: 14,
-                          color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                          color: widget.menuModel!.isAvailableToday == false
+                              ? Colors.grey
+                              : context.iconColor,
                         ),
                         trimLines: 2,
                         trimMode: TrimMode.Line,
@@ -215,7 +235,9 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                 '${selectedRestaurant.currency}${widget.menuModel!.price}',
                 style: boldTextStyle(
                   size: 20,
-                  color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                  color: widget.menuModel!.isAvailableToday == false
+                      ? Colors.grey
+                      : context.iconColor,
                 ),
               ).expand(),
               Wrap(
@@ -229,7 +251,9 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                           getMenuType()[index],
                           style: secondaryTextStyle(
                             size: 12,
-                            color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                            color: widget.menuModel!.isAvailableToday == false
+                                ? Colors.grey
+                                : context.iconColor,
                           ),
                         ),
                         index == (getMenuType().length - 1)
@@ -237,14 +261,20 @@ class _MenuComponentStyleOneState extends State<MenuComponentStyleOne> {
                                 '',
                                 style: secondaryTextStyle(
                                   size: 12,
-                                  color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                                  color: widget.menuModel!.isAvailableToday ==
+                                          false
+                                      ? Colors.grey
+                                      : context.iconColor,
                                 ),
                               )
                             : Text(
                                 ', ',
                                 style: secondaryTextStyle(
                                   size: 12,
-                                  color: widget.menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                                  color: widget.menuModel!.isAvailableToday ==
+                                          false
+                                      ? Colors.grey
+                                      : context.iconColor,
                                 ),
                               )
                       ],

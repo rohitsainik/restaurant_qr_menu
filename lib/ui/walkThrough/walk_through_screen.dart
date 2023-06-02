@@ -73,28 +73,43 @@ class WalkThroughScreenState extends State<WalkThroughScreen> {
                     pages: data,
                     pageController: pageController,
                     indicatorColor: context.iconColor,
-                    unselectedIndicatorColor: context.iconColor.withOpacity(0.5),
+                    unselectedIndicatorColor:
+                        context.iconColor.withOpacity(0.5),
                   ),
                   AnimatedCrossFade(
                     sizeCurve: Curves.bounceOut,
-                    crossFadeState: currentPageIndex == 2 ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                    crossFadeState: currentPageIndex == 2
+                        ? CrossFadeState.showSecond
+                        : CrossFadeState.showFirst,
                     duration: Duration(milliseconds: 550),
                     firstChild: Container(
                       height: 50,
                       width: 50,
-                      decoration: boxDecorationDefault(color: primaryColor, boxShadow: defaultBoxShadow(blurRadius: 0, spreadRadius: 0)),
+                      decoration: boxDecorationDefault(
+                          color: primaryColor,
+                          boxShadow:
+                              defaultBoxShadow(blurRadius: 0, spreadRadius: 0)),
                       child: Icon(Icons.arrow_forward, color: Colors.white),
                     ).onTap(() async {
-                      pageController.nextPage(duration: Duration(milliseconds: 550), curve: Curves.decelerate);
+                      pageController.nextPage(
+                          duration: Duration(milliseconds: 550),
+                          curve: Curves.decelerate);
                     }, borderRadius: radius()),
                     secondChild: Container(
                       height: 50,
                       padding: EdgeInsets.symmetric(horizontal: 16),
-                      decoration: boxDecorationDefault(color: primaryColor, boxShadow: defaultBoxShadow(blurRadius: 0, spreadRadius: 0)),
-                      child: Text(language.lblGetStarted, style: boldTextStyle(color: Colors.white)).center(),
+                      decoration: boxDecorationDefault(
+                          color: primaryColor,
+                          boxShadow:
+                              defaultBoxShadow(blurRadius: 0, spreadRadius: 0)),
+                      child: Text(language.lblGetStarted,
+                              style: boldTextStyle(color: Colors.white))
+                          .center(),
                     ).onTap(() {
                       setValue(SharePreferencesKey.IS_WALKED_THROUGH, true);
-                      SignInScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds);
+                      SignInScreen().launch(context,
+                          pageRouteAnimation: PageRouteAnimation.Scale,
+                          duration: 450.milliseconds);
                     }, borderRadius: radius()),
                   ),
                 ],

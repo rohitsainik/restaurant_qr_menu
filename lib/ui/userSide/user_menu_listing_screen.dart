@@ -29,7 +29,9 @@ class _UserMenuListingScreenState extends State<UserMenuListingScreen> {
     categoryService = CategoryService(restaurantId: widget.id.validate());
     menuStore.setSelectedCategoryData(null);
 
-    await restaurantOwnerService.getRestaurantFutureData(widget.id.validate()).then((value) {
+    await restaurantOwnerService
+        .getRestaurantFutureData(widget.id.validate())
+        .then((value) {
       selectedRestaurant = value;
       appStore.setLoading(false);
     }).catchError(
@@ -50,7 +52,8 @@ class _UserMenuListingScreenState extends State<UserMenuListingScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              push(UserSettingScreen(), pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
+              push(UserSettingScreen(),
+                  pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
             },
             icon: Icon(Icons.settings, color: context.iconColor),
           ),
@@ -65,4 +68,3 @@ class _UserMenuListingScreenState extends State<UserMenuListingScreen> {
     );
   }
 }
-

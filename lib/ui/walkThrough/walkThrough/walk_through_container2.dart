@@ -20,9 +20,11 @@ class _WalkThroughContainer2State extends State<WalkThroughContainer2> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             50.height,
-            Image.asset(AppImages.language, height: 300, width: 300).cornerRadiusWithClipRRect(16),
+            Image.asset(AppImages.language, height: 300, width: 300)
+                .cornerRadiusWithClipRRect(16),
             40.height,
-            Text(language.lblSelectLanguage.toUpperCase(), style: boldTextStyle(size: 20)),
+            Text(language.lblSelectLanguage.toUpperCase(),
+                style: boldTextStyle(size: 20)),
             16.height,
             Text(
               language.lblSelectLanguageDesc,

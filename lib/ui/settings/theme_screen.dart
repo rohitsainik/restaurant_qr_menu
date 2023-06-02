@@ -86,14 +86,18 @@ class _ThemeScreenState extends State<ThemeScreen> {
                 padding: EdgeInsets.all(16),
                 child: Row(
                   children: [
-                    Text('${_getName(ThemeModes.values[index])}', style: boldTextStyle()).expand(),
+                    Text('${_getName(ThemeModes.values[index])}',
+                            style: boldTextStyle())
+                        .expand(),
                     _getIcons(context, ThemeModes.values[index]),
                   ],
                 ),
               ).onTap(() async {
                 currentIndex = index;
                 if (index == AppThemeMode.ThemeModeSystem) {
-                  appStore.setDarkMode(MediaQuery.of(context).platformBrightness == Brightness.dark);
+                  appStore.setDarkMode(
+                      MediaQuery.of(context).platformBrightness ==
+                          Brightness.dark);
                 } else if (index == AppThemeMode.ThemeModeLight) {
                   appStore.setDarkMode(false);
                 } else if (index == AppThemeMode.ThemeModeDark) {

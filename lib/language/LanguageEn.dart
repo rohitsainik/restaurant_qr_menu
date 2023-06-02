@@ -32,7 +32,8 @@ class LanguageEn extends BaseLanguage {
   String get lblCategories => "Categories";
 
   @override
-  String get lblLongPressOnCategoryForMoreOptions => "Long Press on Category for more options. ";
+  String get lblLongPressOnCategoryForMoreOptions =>
+      "Long Press on Category for more options. ";
 
   @override
   String get lblA => "A";
@@ -56,7 +57,8 @@ class LanguageEn extends BaseLanguage {
   String get lblForgetPassword => "Forget Password?";
 
   @override
-  String get lblEnterYouEmail => "A reset password link will be sent to the above entered email address";
+  String get lblEnterYouEmail =>
+      "A reset password link will be sent to the above entered email address";
 
   @override
   String get lblEmail => "Email";
@@ -68,7 +70,8 @@ class LanguageEn extends BaseLanguage {
   String get lblResetPassword => "Reset Password";
 
   @override
-  String get lblResetPasswordLinkHasSentYourMail => "Reset password link has sent your mail";
+  String get lblResetPasswordLinkHasSentYourMail =>
+      "Reset password link has sent your mail";
 
   @override
   String get lblEnable => "Enable";
@@ -77,7 +80,8 @@ class LanguageEn extends BaseLanguage {
   String get lblDisable => "Disable";
 
   @override
-  String get lblTextForDeletingCategory => "If you delete this category,all of its menus will be removed. Do you still want to delete";
+  String get lblTextForDeletingCategory =>
+      "If you delete this category,all of its menus will be removed. Do you still want to delete";
 
   @override
   String get lblWrongSelection => "Wrong Selection";
@@ -162,7 +166,8 @@ class LanguageEn extends BaseLanguage {
   String get lblDoYouWantToUpdate => "Do you want to update";
 
   @override
-  String get lblDoYouWantToAddThisCategory => "Do you want to add this category";
+  String get lblDoYouWantToAddThisCategory =>
+      "Do you want to add this category";
 
   @override
   String get lblDescription => "Description";
@@ -174,7 +179,8 @@ class LanguageEn extends BaseLanguage {
   String get lblDoYouWantToDelete => "Do you want to delete";
 
   @override
-  String get lblDoYouWantToAddThisMenuItem => "Do you want to add this Menu Item";
+  String get lblDoYouWantToAddThisMenuItem =>
+      "Do you want to add this Menu Item";
 
   @override
   String get lblPleaseChooseCategory => "Please choose category";
@@ -189,19 +195,23 @@ class LanguageEn extends BaseLanguage {
   String get lblIngredients => "Ingredients";
 
   @override
-  String get lblNewDescription => "Explore the exclusive selection of new dishes and delicacies cooked to tingle your taste buds";
+  String get lblNewDescription =>
+      "Explore the exclusive selection of new dishes and delicacies cooked to tingle your taste buds";
 
   @override
   String get lblVeg => "Veg";
 
   @override
-  String get lblVegDescription => "Select from the exotic collection of vegetables, stirred and sautéed tossed and cooked with perfection";
+  String get lblVegDescription =>
+      "Select from the exotic collection of vegetables, stirred and sautéed tossed and cooked with perfection";
 
   @override
-  String get lblSpicyDescription => "Hot and sizzling, if you are a fan of spicy cuisine, check out the special Spicy range of delicacies.";
+  String get lblSpicyDescription =>
+      "Hot and sizzling, if you are a fan of spicy cuisine, check out the special Spicy range of delicacies.";
 
   @override
-  String get lblJainDescription => "Catering to your food preferences is our goal, explore a dedicated Jain food menu to find your perfect one";
+  String get lblJainDescription =>
+      "Catering to your food preferences is our goal, explore a dedicated Jain food menu to find your perfect one";
 
   @override
   String get lblSpecialDescription =>
@@ -211,7 +221,8 @@ class LanguageEn extends BaseLanguage {
   String get lblSweet => "Sweet";
 
   @override
-  String get lblSweetDescription => "A meal without Dessert is incomplete, tantalize your senses with our sweetest Dessert collection";
+  String get lblSweetDescription =>
+      "A meal without Dessert is incomplete, tantalize your senses with our sweetest Dessert collection";
 
   @override
   String get lblPopularDescription =>
@@ -230,7 +241,8 @@ class LanguageEn extends BaseLanguage {
   String get lblAddRestaurant => "Add Restaurant";
 
   @override
-  String get lblDoYouWantToUpdateRestaurant => "Do you want to update restaurant";
+  String get lblDoYouWantToUpdateRestaurant =>
+      "Do you want to update restaurant";
 
   @override
   String get lblDoYouWantToAddRestaurant => "Do you want to add restaurant";
@@ -269,13 +281,16 @@ class LanguageEn extends BaseLanguage {
   String get lblConfirmPassword => "Confirm Password";
 
   @override
-  String get lblPasswordLengthShouldBeMoreThanSix => "Password length should be more than six";
+  String get lblPasswordLengthShouldBeMoreThanSix =>
+      "Password length should be more than six";
 
   @override
-  String get lblBothPasswordShouldBeMatched => "Both password should be matched";
+  String get lblBothPasswordShouldBeMatched =>
+      "Both password should be matched";
 
   @override
-  String get lblOldPasswordShouldNotBeSameAsNewPassword => "Old password should not be same as new password";
+  String get lblOldPasswordShouldNotBeSameAsNewPassword =>
+      "Old password should not be same as new password";
 
   @override
   String get lblSave => "Save";
@@ -323,7 +338,8 @@ class LanguageEn extends BaseLanguage {
   String get lblNoPermission => "No Permission";
 
   @override
-  String get lblDoYouWantToDeleteRestaurant => "Do you want to delete restaurant";
+  String get lblDoYouWantToDeleteRestaurant =>
+      "Do you want to delete restaurant";
 
   @override
   String get lblSettings => "Settings";
@@ -332,7 +348,8 @@ class LanguageEn extends BaseLanguage {
   String get lblChangePassword => "Change Password";
 
   @override
-  String get lblUserLoginWithSocialAccountCannotChangeThePassword => "User login with social account cannot change the password";
+  String get lblUserLoginWithSocialAccountCannotChangeThePassword =>
+      "User login with social account cannot change the password";
 
   @override
   String get lblDarkMode => "Dark Mode";
@@ -420,7 +437,8 @@ class LanguageEn extends BaseLanguage {
   String get lblWaitToScan => "Wait to Scan";
 
   @override
-  String get lblUserAlreadyRegisterWithEmail => "User already register with email";
+  String get lblUserAlreadyRegisterWithEmail =>
+      "User already register with email";
 
   @override
   String get lblWrongURL => "Wrong URL";

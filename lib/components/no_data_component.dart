@@ -20,7 +20,9 @@ class NoMenuComponent extends StatelessWidget {
         children: [
           cachedImage(AppImages.noDataImage, height: 250),
           16.height,
-          Text('${language.lblNoMenuFor} ${categoryName.validate(value: "All")} ', style: boldTextStyle(size: 20)),
+          Text(
+              '${language.lblNoMenuFor} ${categoryName.validate(value: "All")} ',
+              style: boldTextStyle(size: 20)),
         ],
       ).paddingTop(80),
     ).center();

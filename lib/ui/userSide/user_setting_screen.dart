@@ -41,7 +41,8 @@ class _UserSettingScreenState extends State<UserSettingScreen> {
           SnapHelperWidget(
             future: getPackageInfo(),
             onSuccess: (PackageInfoData snap) {
-              return Text(snap.versionName.validate(), style: secondaryTextStyle());
+              return Text(snap.versionName.validate(),
+                  style: secondaryTextStyle());
             },
           ),
           8.width,
@@ -57,19 +58,26 @@ class _UserSettingScreenState extends State<UserSettingScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBarWidget('', color: context.scaffoldBackgroundColor, elevation: 0),
+        appBar: appBarWidget('',
+            color: context.scaffoldBackgroundColor, elevation: 0),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(language.lblSettings, style: boldTextStyle(size: 34)).paddingSymmetric(horizontal: 16),
+            Text(language.lblSettings, style: boldTextStyle(size: 34))
+                .paddingSymmetric(horizontal: 16),
             16.height,
             Observer(
               builder: (_) => SettingItemWidget(
                 title: language.lblDarkMode,
-                leading: Icon(!appStore.isDarkMode ? Icons.dark_mode_outlined : Icons.light_mode_outlined, size: 20),
+                leading: Icon(
+                    !appStore.isDarkMode
+                        ? Icons.dark_mode_outlined
+                        : Icons.light_mode_outlined,
+                    size: 20),
                 titleTextStyle: primaryTextStyle(size: 16),
                 onTap: () {
-                  push(ThemeScreen(), pageRouteAnimation: PageRouteAnimation.Slide);
+                  push(ThemeScreen(),
+                      pageRouteAnimation: PageRouteAnimation.Slide);
                 },
                 trailing: trailingIcon(),
               ),
@@ -82,14 +90,18 @@ class _UserSettingScreenState extends State<UserSettingScreen> {
                 children: [
                   TextIcon(
                     text: selectedLanguageDataModel!.name.validate(),
-                    prefix: Image.asset(selectedLanguageDataModel!.flag.validate(), width: 24, height: 24),
+                    prefix: Image.asset(
+                        selectedLanguageDataModel!.flag.validate(),
+                        width: 24,
+                        height: 24),
                   ),
                   8.width,
                   Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 14),
                 ],
               ),
               onTap: () {
-                push(LanguageScreen(), pageRouteAnimation: PageRouteAnimation.Slide);
+                push(LanguageScreen(),
+                    pageRouteAnimation: PageRouteAnimation.Slide);
               },
             ),
             SettingItemWidget(

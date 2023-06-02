@@ -1,4 +1,5 @@
-import 'package:cloud_firestore_platform_interface/src/timestamp.dart' show Timestamp;
+import 'package:cloud_firestore_platform_interface/src/timestamp.dart'
+    show Timestamp;
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_picker/image_picker.dart';
@@ -70,13 +71,20 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
     appStore.setLoading(true);
 
     if (isUpdate) {
-      await categoryService.updateCategoryInfo(getCategoryData.toJson(), widget.categoryData!.uid.validate(), selectedRestaurant.uid!, profileImage: image != null ? image : null).then((value) {
+      await categoryService
+          .updateCategoryInfo(getCategoryData.toJson(),
+              widget.categoryData!.uid.validate(), selectedRestaurant.uid!,
+              profileImage: image != null ? image : null)
+          .then((value) {
         finish(context, true);
       }).catchError((e) {
         toast(e.toString(), print: true);
       }).whenComplete(() => appStore.setLoading(false));
     } else {
-      await categoryService.addCategoryInfo(getCategoryData.toJson(), selectedRestaurant.uid!, profileImage: image != null ? image : null).then((value) {
+      await categoryService
+          .addCategoryInfo(getCategoryData.toJson(), selectedRestaurant.uid!,
+              profileImage: image != null ? image : null)
+          .then((value) {
         finish(context);
       }).catchError((e) {
         toast(e.toString());
@@ -87,15 +95,25 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
   Future<void> deleteData() async {
     appStore.setLoading(true);
 
-    if (await menuService.checkChildItemExist(widget.categoryData!.uid!, selectedRestaurant.uid!) < 0) {
-      categoryService.removeCustomDocument(widget.categoryData!.uid!, selectedRestaurant.uid!).then((value) {
+    if (await menuService.checkChildItemExist(
+            widget.categoryData!.uid!, selectedRestaurant.uid!) <
+        0) {
+      categoryService
+          .removeCustomDocument(
+              widget.categoryData!.uid!, selectedRestaurant.uid!)
+          .then((value) {
         appStore.setLoading(false);
         finish(context);
       }).catchError((e) async {});
     } else {
       appStore.setLoading(true);
-      await menuService.checkToDelete(widget.categoryData!.uid!, selectedRestaurant.uid!).then((value) async {
-        await categoryService.removeCustomDocument(widget.categoryData!.uid!, selectedRestaurant.uid!).then((value) {
+      await menuService
+          .checkToDelete(widget.categoryData!.uid!, selectedRestaurant.uid!)
+          .then((value) async {
+        await categoryService
+            .removeCustomDocument(
+                widget.categoryData!.uid!, selectedRestaurant.uid!)
+            .then((value) {
           appStore.setLoading(false);
           finish(context);
         }).catchError((e) async {});
@@ -103,7 +121,8 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
 
       appStore.setLoading(false);
     }
-    menuStore.setSelectedCategoryData(appStore.isAll ? null : menuStore.selectedCategoryData);
+    menuStore.setSelectedCategoryData(
+        appStore.isAll ? null : menuStore.selectedCategoryData);
   }
 
   void updateData() {
@@ -114,7 +133,9 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
       showConfirmDialogCustom(
         context,
         dialogType: isUpdate ? DialogType.UPDATE : DialogType.ADD,
-        title: isUpdate ? '${language.lblDoYouWantToUpdate} ${widget.categoryData!.name}?' : '${language.lblDoYouWantToAddThisCategory}?',
+        title: isUpdate
+            ? '${language.lblDoYouWantToUpdate} ${widget.categoryData!.name}?'
+            : '${language.lblDoYouWantToAddThisCategory}?',
         onAccept: (context) {
           hideKeyboard(context);
           saveData();
@@ -143,7 +164,8 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                     deleteData();
                   },
                   dialogType: DialogType.DELETE,
-                  title: '${language.lblTextForDeletingCategory} ${widget.categoryData!.name}?',
+                  title:
+                      '${language.lblTextForDeletingCategory} ${widget.categoryData!.name}?',
                 );
               },
               icon: Icon(Icons.delete, color: context.iconColor),
@@ -154,7 +176,8 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
         floatingActionButton: FloatingActionButton.extended(
           label: Text(
             isUpdate ? "${language.lblUpdate}" : "${language.lblAdd}",
-            style: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+            style: boldTextStyle(
+                color: appStore.isDarkMode ? Colors.black : Colors.white),
           ),
           icon: Icon(
             isUpdate ? Icons.update : Icons.add,
@@ -188,10 +211,13 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                           textStyle: primaryTextStyle(),
                           focus: nameFocus,
                           nextFocus: descFocus,
-                          decoration: inputDecoration(context, label: language.lblName).copyWith(
+                          decoration:
+                              inputDecoration(context, label: language.lblName)
+                                  .copyWith(
                             prefixIcon: IconButton(
                               onPressed: null,
-                              icon: Icon(Icons.drive_file_rename_outline, color: secondaryIconColor),
+                              icon: Icon(Icons.drive_file_rename_outline,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           controller: nameCont,
@@ -201,14 +227,21 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                         AppTextField(
                           textStyle: primaryTextStyle(),
                           textInputAction: TextInputAction.done,
-                          decoration: inputDecoration(context, label: language.lblDescription).copyWith(
+                          decoration: inputDecoration(context,
+                                  label: language.lblDescription)
+                              .copyWith(
                             prefixIcon: IconButton(
                               onPressed: null,
-                              icon: Icon(Icons.description_outlined, color: secondaryIconColor),
+                              icon: Icon(Icons.description_outlined,
+                                  color: secondaryIconColor),
                             ),
                           ),
                           controller: descCont,
-                          buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
+                          buildCounter: (context,
+                                  {required currentLength,
+                                  required isFocused,
+                                  maxLength}) =>
+                              null,
                           maxLines: 8,
                           minLines: 3,
                           maxLength: 26,

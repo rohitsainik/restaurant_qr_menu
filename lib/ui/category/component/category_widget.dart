@@ -29,7 +29,9 @@ class CategoryWidget extends StatelessWidget {
           Container(
             height: 66,
             width: 66,
-            decoration: BoxDecoration(color: context.cardColor, borderRadius: BorderRadius.circular(50)),
+            decoration: BoxDecoration(
+                color: context.cardColor,
+                borderRadius: BorderRadius.circular(50)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: !categoryData!.image.isEmptyOrNull

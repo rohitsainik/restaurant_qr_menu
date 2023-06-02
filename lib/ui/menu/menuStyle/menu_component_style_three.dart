@@ -54,7 +54,8 @@ class MenuComponentStyleThree extends StatelessWidget {
                                       '${menuModel!.name!.validate()[0].toUpperCase()}',
                                       style: boldTextStyle(size: 14),
                                     ).center()
-                                  : cachedImage(menuModel!.image, fit: BoxFit.cover),
+                                  : cachedImage(menuModel!.image,
+                                      fit: BoxFit.cover),
                             ),
                           ),
                           if (menuModel!.isAvailableToday == false)
@@ -74,7 +75,9 @@ class MenuComponentStyleThree extends StatelessWidget {
                         '${menuModel!.name!.trim()}',
                         style: boldTextStyle(
                           size: 16,
-                          color: menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                          color: menuModel!.isAvailableToday == false
+                              ? Colors.grey
+                              : context.iconColor,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -84,17 +87,21 @@ class MenuComponentStyleThree extends StatelessWidget {
                       if (menuModel!.status == false)
                         Icon(
                           Icons.circle,
-                          color: menuModel!.isAvailableToday == false ? Colors.grey : Colors.red,
+                          color: menuModel!.isAvailableToday == false
+                              ? Colors.grey
+                              : Colors.red,
                           size: 12,
                         ),
                       6.width,
-                      menuModel!.isJain.validate() && menuModel!.isAvailableToday != false
+                      menuModel!.isJain.validate() &&
+                              menuModel!.isAvailableToday != false
                           ? Text(
                               'J',
                               style: boldTextStyle(size: 16, color: Colors.red),
                             )
                           : Offstage(),
-                      menuModel!.isSpicy.validate() && menuModel!.isAvailableToday != false
+                      menuModel!.isSpicy.validate() &&
+                              menuModel!.isAvailableToday != false
                           ? Image.asset(
                               'images/chili.png',
                               height: 16,
@@ -106,12 +113,15 @@ class MenuComponentStyleThree extends StatelessWidget {
                   4.height,
                   if (menuModel!.ingredient.validate().isNotEmpty)
                     Wrap(
-                      children: List.generate(menuModel!.ingredient.validate().length, (index) {
+                      children: List.generate(
+                          menuModel!.ingredient.validate().length, (index) {
                         return Text(
                           '${menuModel!.ingredient?[index].capitalizeFirstLetter()}',
                           style: primaryTextStyle(
                             size: 12,
-                            color: menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                            color: menuModel!.isAvailableToday == false
+                                ? Colors.grey
+                                : context.iconColor,
                           ),
                         );
                       }),
@@ -127,7 +137,9 @@ class MenuComponentStyleThree extends StatelessWidget {
                 '${selectedRestaurant.currency}${menuModel!.price}',
                 style: boldTextStyle(
                   size: 20,
-                  color: menuModel!.isAvailableToday == false ? Colors.grey : context.iconColor,
+                  color: menuModel!.isAvailableToday == false
+                      ? Colors.grey
+                      : context.iconColor,
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

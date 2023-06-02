@@ -14,17 +14,17 @@ class _LanguageScreenState extends State<LanguageScreen> {
     super.initState();
   }
 
-
   Color? getSelectedColor(LanguageDataModel data) {
-    if (appStore.selectedLanguage == data.languageCode.validate() && appStore.isDarkMode) {
+    if (appStore.selectedLanguage == data.languageCode.validate() &&
+        appStore.isDarkMode) {
       return Colors.white54;
-    } else if (appStore.selectedLanguage == data.languageCode.validate() && !appStore.isDarkMode) {
+    } else if (appStore.selectedLanguage == data.languageCode.validate() &&
+        !appStore.isDarkMode) {
       return primaryColor.withAlpha(40);
     } else {
       return null;
     }
   }
-
 
   @override
   void setState(fn) {
@@ -65,7 +65,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       children: [
                         Text('${data.name.validate()}', style: boldTextStyle()),
                         8.height,
-                        Text('${data.subTitle.validate()}', style: secondaryTextStyle()),
+                        Text('${data.subTitle.validate()}',
+                            style: secondaryTextStyle()),
                       ],
                     ).expand(),
                     Image.asset(data.flag.validate(), width: 34),

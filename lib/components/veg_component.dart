@@ -11,8 +11,12 @@ class VegComponent extends StatelessWidget {
     return Container(
       height: size,
       width: size,
-      decoration: BoxDecoration(border: Border.all(color: isAvailableToday == false ? Colors.grey : Colors.green)),
-      child: Icon(Icons.circle, size: size! - 2, color: isAvailableToday == false ? Colors.grey : Colors.green),
+      decoration: BoxDecoration(
+          border: Border.all(
+              color: isAvailableToday == false ? Colors.grey : Colors.green)),
+      child: Icon(Icons.circle,
+          size: size! - 2,
+          color: isAvailableToday == false ? Colors.grey : Colors.green),
     );
   }
 }
@@ -28,8 +32,12 @@ class NonVegComponent extends StatelessWidget {
     return Container(
       height: size,
       width: size,
-      decoration: BoxDecoration(border: Border.all(color: isAvailableToday == false ? Colors.grey : Colors.red)),
-      child: Icon(Icons.circle, size: size! - 2, color: isAvailableToday == false ? Colors.grey : Colors.red),
+      decoration: BoxDecoration(
+          border: Border.all(
+              color: isAvailableToday == false ? Colors.grey : Colors.red)),
+      child: Icon(Icons.circle,
+          size: size! - 2,
+          color: isAvailableToday == false ? Colors.grey : Colors.red),
     );
   }
 }

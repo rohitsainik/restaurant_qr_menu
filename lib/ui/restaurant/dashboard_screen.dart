@@ -43,7 +43,9 @@ class DashBoardScreenState extends State<DashBoardScreen> {
             actions: [
               IconButton(
                 onPressed: () {
-                  push(SettingScreen(), pageRouteAnimation: PageRouteAnimation.Scale, duration: 450.milliseconds);
+                  push(SettingScreen(),
+                      pageRouteAnimation: PageRouteAnimation.Scale,
+                      duration: 450.milliseconds);
                 },
                 icon: Icon(Icons.settings, color: context.iconColor),
               ),
@@ -68,7 +70,8 @@ class DashBoardScreenState extends State<DashBoardScreen> {
                     },
                   ).expand(),
                   AddNewComponentItem(onTap: () {
-                    push(AddRestaurantScreen(userId: getStringAsync(SharePreferencesKey.USER_ID)));
+                    push(AddRestaurantScreen(
+                        userId: getStringAsync(SharePreferencesKey.USER_ID)));
                   })
                 ],
               ),
@@ -78,7 +81,8 @@ class DashBoardScreenState extends State<DashBoardScreen> {
                 builder: (context, snap) {
                   if (snap.hasData) {
                     if (snap.data!.length <= 0) {
-                      return NoRestaurantComponent(errorName: "${language.lblNoRestaurant}");
+                      return NoRestaurantComponent(
+                          errorName: "${language.lblNoRestaurant}");
                     }
                     return Responsive(
                       mobile: ListView.builder(
@@ -87,13 +91,17 @@ class DashBoardScreenState extends State<DashBoardScreen> {
                         itemCount: snap.data!.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return RestaurantCardComponent(data: snap.data![index]).paddingSymmetric(vertical: 8);
+                          return RestaurantCardComponent(
+                                  data: snap.data![index])
+                              .paddingSymmetric(vertical: 8);
                         },
                       ),
                       web: GridView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
-                          return RestaurantCardComponent(data: snap.data![index]).paddingSymmetric(vertical: 8);
+                          return RestaurantCardComponent(
+                                  data: snap.data![index])
+                              .paddingSymmetric(vertical: 8);
                         },
                         itemCount: snap.data!.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

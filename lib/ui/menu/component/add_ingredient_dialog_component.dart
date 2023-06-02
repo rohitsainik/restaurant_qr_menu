@@ -10,12 +10,14 @@ class AddIngredientDialogComponent extends StatefulWidget {
   AddIngredientDialogComponent({this.value});
 
   @override
-  _AddIngredientDialogComponentState createState() => _AddIngredientDialogComponentState();
+  _AddIngredientDialogComponentState createState() =>
+      _AddIngredientDialogComponentState();
 }
 
 List<String> ingredient = [];
 
-class _AddIngredientDialogComponentState extends State<AddIngredientDialogComponent> {
+class _AddIngredientDialogComponentState
+    extends State<AddIngredientDialogComponent> {
   TextEditingController ingredientCont = TextEditingController();
 
   var _formKey = GlobalKey<FormState>();
@@ -54,14 +56,18 @@ class _AddIngredientDialogComponentState extends State<AddIngredientDialogCompon
           children: [
             16.height,
             Text(
-              isUpdate ? '${language.lblUpdateIngredient}' : '${language.lblAddIngredient}',
+              isUpdate
+                  ? '${language.lblUpdateIngredient}'
+                  : '${language.lblAddIngredient}',
               style: boldTextStyle(),
             ),
             16.height,
             AppTextField(
               isValidationRequired: true,
-              decoration: inputDecoration(context, label: "${language.lblName}").copyWith(
-                prefixIcon: Icon(Icons.drive_file_rename_outline, color: secondaryIconColor),
+              decoration: inputDecoration(context, label: "${language.lblName}")
+                  .copyWith(
+                prefixIcon: Icon(Icons.drive_file_rename_outline,
+                    color: secondaryIconColor),
               ),
               controller: ingredientCont,
               textFieldType: TextFieldType.NAME,
@@ -80,14 +86,17 @@ class _AddIngredientDialogComponentState extends State<AddIngredientDialogCompon
                 8.width,
                 AppButton(
                   color: primaryColor,
-                  text: isUpdate ? "${language.lblUpdate}" : "${language.lblAdd}",
+                  text:
+                      isUpdate ? "${language.lblUpdate}" : "${language.lblAdd}",
                   textStyle: primaryTextStyle(color: Colors.white),
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       if (ingredientCont.text.isNotEmpty) {
                         if (isUpdate) {
-                          ingredient[ingredient.indexWhere((element) => element == widget.value)] = ingredientCont.text;
+                          ingredient[ingredient.indexWhere(
+                                  (element) => element == widget.value)] =
+                              ingredientCont.text;
                           hideKeyboard(context);
                           finish(context);
                           setState(() {

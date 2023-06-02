@@ -21,9 +21,11 @@ class _WalkThroughContainer1State extends State<WalkThroughContainer1> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             50.height,
-            Image.asset(AppImages.paperLess, height: 300, width: 300).cornerRadiusWithClipRRect(16),
+            Image.asset(AppImages.paperLess, height: 300, width: 300)
+                .cornerRadiusWithClipRRect(16),
             64.height,
-            Text(language.lblGoPaperless.toUpperCase(), style: boldTextStyle(size: 20)),
+            Text(language.lblGoPaperless.toUpperCase(),
+                style: boldTextStyle(size: 20)),
             16.height,
             Text(
               language.lblGoPaperlessWithOurDigitalMenu,

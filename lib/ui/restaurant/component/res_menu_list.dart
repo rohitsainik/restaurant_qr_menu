@@ -47,7 +47,8 @@ class _ResMenuListState extends State<ResMenuList> {
               16.height,
               Row(
                 children: [
-                  Text(language.lblMenuItems, style: boldTextStyle(size: 20)).expand(),
+                  Text(language.lblMenuItems, style: boldTextStyle(size: 20))
+                      .expand(),
                   if (widget.isAdmin)
                     AddNewComponentItem(onTap: () {
                       push(AddMenuItemScreen()).then((value) {
@@ -62,30 +63,38 @@ class _ResMenuListState extends State<ResMenuList> {
                   ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (_, index) {
-                      MenuCategoryModel data = appStore.menuListByCategory[index];
+                      MenuCategoryModel data =
+                          appStore.menuListByCategory[index];
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           StreamBuilder<CategoryModel>(
-                            stream: categoryService.getSingleStreamData(uId: data.categoryId.validate()),
+                            stream: categoryService.getSingleStreamData(
+                                uId: data.categoryId.validate()),
                             builder: (context, snap) {
                               if (snap.hasData) {
-                                return getMenuCategoryListWidget(snap.data!, widget.isAdmin);
+                                return getMenuCategoryListWidget(
+                                    snap.data!, widget.isAdmin);
                               }
                               return snapWidgetHelper(snap);
                             },
                           ),
-                          GetMenuComponentWidget(data: data, isAdmin: widget.isAdmin)
+                          GetMenuComponentWidget(
+                              data: data, isAdmin: widget.isAdmin)
                         ],
                       ).paddingSymmetric(horizontal: 8, vertical: 8);
                     },
                     shrinkWrap: true,
-                    itemCount: appStore.isAll ? appStore.menuListByCategory.length : appStore.menuListByCategory.take(1).length,
+                    itemCount: appStore.isAll
+                        ? appStore.menuListByCategory.length
+                        : appStore.menuListByCategory.take(1).length,
                   ),
                   NoMenuComponent(
-                    categoryName: menuStore.selectedCategoryData?.name.validate(),
-                  ).center().visible(appStore.menuListByCategory.isEmpty && !appStore.isLoading),
+                    categoryName:
+                        menuStore.selectedCategoryData?.name.validate(),
+                  ).center().visible(appStore.menuListByCategory.isEmpty &&
+                      !appStore.isLoading),
                   Loader().center().visible(appStore.isLoading),
                 ],
               ),

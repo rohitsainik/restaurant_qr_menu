@@ -37,15 +37,21 @@ class _SplashScreenState extends State<SplashScreen> {
     if (getBoolAsync(SharePreferencesKey.IS_WALKED_THROUGH)) {
       if (getBoolAsync(SharePreferencesKey.IS_LOGGED_IN)) {
         if (getStringAsync(SharePreferencesKey.USER_NUMBER).isEmpty) {
-          SignUpScreen(isFromLogin: true).launch(context, pageRouteAnimation: PageRouteAnimation.Fade, isNewTask: true);
+          SignUpScreen(isFromLogin: true).launch(context,
+              pageRouteAnimation: PageRouteAnimation.Fade, isNewTask: true);
         } else {
-          DashBoardScreen().launch(context, isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+          DashBoardScreen().launch(context,
+              isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
         }
       } else {
-        SignInScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Scale, isNewTask: true, duration: 450.milliseconds);
+        SignInScreen().launch(context,
+            pageRouteAnimation: PageRouteAnimation.Scale,
+            isNewTask: true,
+            duration: 450.milliseconds);
       }
     } else {
-      WalkThroughScreen().launch(context, isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+      WalkThroughScreen().launch(context,
+          isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
     }
   }
 
@@ -64,7 +70,9 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              appStore.isDarkMode ? AppImages.app_logo : AppImages.app_logo_dark,
+              appStore.isDarkMode
+                  ? AppImages.app_logo
+                  : AppImages.app_logo_dark,
               height: 150,
               width: 150,
             ).cornerRadiusWithClipRRect(defaultRadius),

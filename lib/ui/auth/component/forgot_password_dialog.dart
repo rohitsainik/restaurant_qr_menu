@@ -53,8 +53,10 @@ class ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
               controller: forgotEmailController,
               textFieldType: TextFieldType.EMAIL,
               keyboardType: TextInputType.emailAddress,
-              decoration: inputDecoration(context, label: language.lblEmail).copyWith(
-                prefixIcon: Icon(Icons.email_outlined, color: secondaryIconColor),
+              decoration:
+                  inputDecoration(context, label: language.lblEmail).copyWith(
+                prefixIcon:
+                    Icon(Icons.email_outlined, color: secondaryIconColor),
               ),
               errorInvalidEmail: language.lblEnterValidEmail,
               errorThisFieldRequired: errorThisFieldRequired,
@@ -64,14 +66,17 @@ class ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
           AppButton(
             child: Text(
               language.lblResetPassword,
-              style: boldTextStyle(color: appStore.isDarkMode ? Colors.black : Colors.white),
+              style: boldTextStyle(
+                  color: appStore.isDarkMode ? Colors.black : Colors.white),
             ),
             width: context.width(),
             onTap: () {
               if (_formKey.currentState!.validate()) {
                 hideKeyboard(context);
                 appStore.setLoading(true);
-                authService.forgotPassword(email: forgotEmailController.text.trim()).then((value) {
+                authService
+                    .forgotPassword(email: forgotEmailController.text.trim())
+                    .then((value) {
                   toast(language.lblResetPasswordLinkHasSentYourMail);
                   finish(context);
                 }).catchError((error) {
