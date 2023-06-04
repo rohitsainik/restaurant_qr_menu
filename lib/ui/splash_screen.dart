@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:qr_menu/main.dart';
 import 'package:qr_menu/ui/auth/sign_in_screen.dart';
 import 'package:qr_menu/ui/auth/sign_up_screen.dart';
+import 'package:qr_menu/ui/landing/landing_screen.dart';
 import 'package:qr_menu/ui/restaurant/dashboard_screen.dart';
 import 'package:qr_menu/ui/walkThrough/walk_through_screen.dart';
 import 'package:qr_menu/utils/colors.dart';
 import 'package:qr_menu/utils/constants.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class SplashScreen extends StatefulWidget {
   static String tag = '/SplashScreen';
@@ -24,7 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> init() async {
     appButtonBackgroundColorGlobal = primaryColor;
-
     afterBuildCreated(() {
       appStore.setLanguage(
           getStringAsync(
@@ -34,25 +36,30 @@ class _SplashScreenState extends State<SplashScreen> {
           context: context);
     });
     await 2.seconds.delay;
-    if (getBoolAsync(SharePreferencesKey.IS_WALKED_THROUGH)) {
-      if (getBoolAsync(SharePreferencesKey.IS_LOGGED_IN)) {
-        if (getStringAsync(SharePreferencesKey.USER_NUMBER).isEmpty) {
-          SignUpScreen(isFromLogin: true).launch(context,
-              pageRouteAnimation: PageRouteAnimation.Fade, isNewTask: true);
+    // if (kIsWeb) {
+    //   LandingPage().launch(context,
+    //       isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+    // } else {
+      if (getBoolAsync(SharePreferencesKey.IS_WALKED_THROUGH)) {
+        if (getBoolAsync(SharePreferencesKey.IS_LOGGED_IN)) {
+          if (getStringAsync(SharePreferencesKey.USER_NUMBER).isEmpty) {
+            SignUpScreen(isFromLogin: true).launch(context,
+                pageRouteAnimation: PageRouteAnimation.Fade, isNewTask: true);
+          } else {
+            DashBoardScreen().launch(context,
+                isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+          }
         } else {
-          DashBoardScreen().launch(context,
-              isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+          SignInScreen().launch(context,
+              pageRouteAnimation: PageRouteAnimation.Scale,
+              isNewTask: true,
+              duration: 450.milliseconds);
         }
       } else {
-        SignInScreen().launch(context,
-            pageRouteAnimation: PageRouteAnimation.Scale,
-            isNewTask: true,
-            duration: 450.milliseconds);
+        WalkThroughScreen().launch(context,
+            isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
       }
-    } else {
-      WalkThroughScreen().launch(context,
-          isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
-    }
+    // }
   }
 
   @override
@@ -70,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              appStore.isDarkMode
+              appStore.isDarkMode == false
                   ? AppImages.app_logo
                   : AppImages.app_logo_dark,
               height: 150,
@@ -78,6 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ).cornerRadiusWithClipRRect(defaultRadius),
             26.height,
             Text(AppConstant.appName, style: boldTextStyle(size: 30)),
+            Text("Your Digital Menu", style: GoogleFonts.poppins(fontSize: 20,color: Colors.black)),
           ],
         ),
       ).center(),

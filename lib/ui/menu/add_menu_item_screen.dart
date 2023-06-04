@@ -427,8 +427,6 @@ class AddMenuItemScreenState extends State<AddMenuItemScreen> {
                             ),
                           ),
                           controller: descCont,
-                          minLines: 3,
-                          maxLines: 3,
                           textFieldType: TextFieldType.MULTILINE,
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(50),

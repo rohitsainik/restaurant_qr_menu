@@ -23,6 +23,7 @@ import 'package:qr_menu/utils/colors.dart';
 import 'package:qr_menu/utils/common.dart';
 import 'package:qr_menu/utils/constants.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 //region Global Variables
 FirebaseFirestore fireStore = FirebaseFirestore.instance;
@@ -46,7 +47,7 @@ void main() async {
 
   setPathUrlStrategy();
   await Firebase.initializeApp(
-      name: "restroqr",
+      name:kIsWeb ?  null : "restroqr",
       options: FirebaseOptions(
           apiKey: "AIzaSyCBYiHUOeQ5hAtUT2ioU_6kj4X1k1CL7rQ",
           appId: "1:643238916979:web:dbfa75568d111540830b06",

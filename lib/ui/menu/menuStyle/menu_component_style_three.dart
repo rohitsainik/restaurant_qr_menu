@@ -49,16 +49,16 @@ class MenuComponentStyleThree extends StatelessWidget {
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(50),
-                              child: menuModel!.image!.isEmpty
-                                  ? Text(
-                                      '${menuModel!.name!.validate()[0].toUpperCase()}',
+                              child: menuModel?.image?.isEmpty == true
+                                   ? Text(
+                                      '${menuModel?.name?.validate()[0].toUpperCase()}',
                                       style: boldTextStyle(size: 14),
                                     ).center()
-                                  : cachedImage(menuModel!.image,
+                                  : cachedImage(menuModel?.image,
                                       fit: BoxFit.cover),
                             ),
                           ),
-                          if (menuModel!.isAvailableToday == false)
+                          if (menuModel?.isAvailableToday == false)
                             Container(
                               height: 24,
                               width: 24,
@@ -72,10 +72,10 @@ class MenuComponentStyleThree extends StatelessWidget {
                       ),
                       4.width,
                       Text(
-                        '${menuModel!.name!.trim()}',
+                        '${menuModel?.name?.trim()}',
                         style: boldTextStyle(
                           size: 16,
-                          color: menuModel!.isAvailableToday == false
+                          color: menuModel?.isAvailableToday == false
                               ? Colors.grey
                               : context.iconColor,
                         ),
@@ -84,24 +84,24 @@ class MenuComponentStyleThree extends StatelessWidget {
                       ),
                       4.width,
                       4.width,
-                      if (menuModel!.status == false)
+                      if (menuModel?.status == false)
                         Icon(
                           Icons.circle,
-                          color: menuModel!.isAvailableToday == false
+                          color: menuModel?.isAvailableToday == false
                               ? Colors.grey
                               : Colors.red,
                           size: 12,
                         ),
                       6.width,
-                      menuModel!.isJain.validate() &&
-                              menuModel!.isAvailableToday != false
+                      menuModel?.isJain.validate() == true &&
+                              menuModel?.isAvailableToday != false
                           ? Text(
                               'J',
                               style: boldTextStyle(size: 16, color: Colors.red),
                             )
                           : Offstage(),
-                      menuModel!.isSpicy.validate() &&
-                              menuModel!.isAvailableToday != false
+                      menuModel?.isSpicy.validate() == true &&
+                              menuModel?.isAvailableToday != false
                           ? Image.asset(
                               'images/chili.png',
                               height: 16,
@@ -111,22 +111,22 @@ class MenuComponentStyleThree extends StatelessWidget {
                     ],
                   ),
                   4.height,
-                  if (menuModel!.ingredient.validate().isNotEmpty)
+                  if (menuModel?.ingredient.validate().isNotEmpty == true)
                     Wrap(
                       children: List.generate(
-                          menuModel!.ingredient.validate().length, (index) {
+                          menuModel?.ingredient.validate().length ?? 0, (index) {
                         return Text(
-                          '${menuModel!.ingredient?[index].capitalizeFirstLetter()}',
+                          '${menuModel?.ingredient?[index].capitalizeFirstLetter()}',
                           style: primaryTextStyle(
                             size: 12,
-                            color: menuModel!.isAvailableToday == false
+                            color: menuModel?.isAvailableToday == false
                                 ? Colors.grey
                                 : context.iconColor,
                           ),
                         );
                       }),
                     ),
-                  if (menuModel!.isAvailableToday == false)
+                  if (menuModel?.isAvailableToday == false)
                     Text(
                       'This item is not available for today',
                       style: secondaryTextStyle(color: Colors.red, size: 10),
@@ -134,10 +134,10 @@ class MenuComponentStyleThree extends StatelessWidget {
                 ],
               ).paddingAll(8),
               Text(
-                '${selectedRestaurant.currency}${menuModel!.price}',
+                '${selectedRestaurant.currency}${menuModel?.price}',
                 style: boldTextStyle(
                   size: 20,
-                  color: menuModel!.isAvailableToday == false
+                  color: menuModel?.isAvailableToday == false
                       ? Colors.grey
                       : context.iconColor,
                 ),
