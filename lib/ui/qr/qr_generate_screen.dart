@@ -30,7 +30,7 @@ class _QrGenerateScreenState extends State<QrGenerateScreen> {
 
   void init() async {
     screenshotController = ScreenshotController();
-    saveUrl = "$mBaseURL${selectedRestaurant.name}+${selectedRestaurant.uid}/";
+    saveUrl = "$mBaseURL${selectedRestaurant.uid}/";
     log(saveUrl);
     setState(() {});
   }

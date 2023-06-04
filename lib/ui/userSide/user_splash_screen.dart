@@ -51,16 +51,15 @@ class _UserSplashScreenState extends State<UserSplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              appStore.isDarkMode
+              appStore.isDarkMode == false
                   ? AppImages.app_logo
                   : AppImages.app_logo_dark,
               height: 150,
               width: 150,
             ).cornerRadiusWithClipRRect(defaultRadius),
             26.height,
-            Text(AppConstant.appName,
-                style: boldTextStyle(
-                    size: 30, fontFamily: GoogleFonts.roboto().fontFamily)),
+            Text(AppConstant.appName, style: boldTextStyle(size: 30)),
+            Text("Your Digital Menu", style: GoogleFonts.poppins(fontSize: 20,color: Colors.black)),
           ],
         ),
       ).center(),
